@@ -49,7 +49,7 @@ jobs:
           echo "--- package.xml generated with added and modified metadata ---"
           cat package/package.xml
           echo "--- Delta Deploy ---"
-          sf project deploy start -l RunSpecifiedTests -n SampleTestClass -x package/package.xml -o ${{ secrets.SFDC_USERNAME }}
+          sf project deploy start -x package/package.xml -o ${{ secrets.SFDC_USERNAME }}
 
   validate:
     if: github.event_name == 'pull_request'

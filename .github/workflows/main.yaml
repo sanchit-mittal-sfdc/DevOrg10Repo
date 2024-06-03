@@ -1,0 +1,125 @@
+name: Salesforce Deployment
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: github.event_name == 'push'
+    runs-on:  ubuntu-latest
+    steps:
+      # Install Salesforce CLI
+      - name: Install Salesforce CLI
+        run: |
+          npm install @salesforce/cli --global
+          sf update
+          sf version
+      # SFDX-Git-Delta
+      - name: Install plugins
+        run: |
+          echo y | sfdx plugins:install sfdx-git-delta
+          sfdx plugins
+      # Install utilities
+      - name: Install utilities
+        run: |
+         pip install yq
+         xq --version
+      # Checkout the code in the pull request
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      # Authenticate to target org
+      - name: "Authenticate to Org"
+        env:
+          SFDX_CLIENT_ID: ${{ secrets.SFDC_CONSUMER_KEY }}
+          SFDX_JWT_KEY_FILE: ./server.key
+          SFDX_USERNAME: ${{ secrets.SFDC_USERNAME }}
+        run: sf org login jwt --username $SFDX_USERNAME --jwt-key-file $SFDX_JWT_KEY_FILE --client-id $SFDX_CLIENT_ID --set-default-dev-hub
+
+      # Delta deploy
+      - name: "Delta deploy"
+        run: |
+          sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output "." -i .forceignore
+          echo "--- package.xml generated with added and modified metadata ---"
+          cat package/package.xml
+          echo "--- Delta Deploy ---"
+          sf project deploy start -x package/package.xml -o ${{ secrets.SFDC_USERNAME }}
+
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on:  ubuntu-latest
+    steps:
+      # Install Salesforce CLI
+      - name: Install Salesforce CLI
+        run: |
+          npm install @salesforce/cli --global
+          sf update
+          sf version
+      # SFDX-Git-Delta
+      - name: Install plugins
+        run: |
+          echo y | sfdx plugins:install sfdx-git-delta
+          sfdx plugins
+      # Install utilities
+      - name: Install utilities
+        run: |
+         pip install yq
+         xq --version
+      # Checkout the code in the pull request
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Authenticate to target org
+      - name: "Authenticate to Org"
+        env:
+          SFDX_CLIENT_ID: ${{ secrets.SFDC_CONSUMER_KEY }}
+          SFDX_JWT_KEY_FILE: ./server.key
+          SFDX_USERNAME: ${{ secrets.SFDC_USERNAME }}
+        run: sf org login jwt --username $SFDX_USERNAME --jwt-key-file $SFDX_JWT_KEY_FILE --client-id $SFDX_CLIENT_ID --set-default-dev-hub
+ 
+      # Run apex test only if pmd check is successful, otherwise this will not execute since we used EXIT 1 above on error
+      - name: Run Apex Tests
+        run: |
+          sf apex run test --test-level RunLocalTests -d test-results -r json -c -o ${{ secrets.SFDC_USERNAME }} -w 10
+          if grep -q "Fail" test-results/test-result-*.json; then
+            echo "Some Apex tests failed:"
+            cat test-results/test-result-*.json
+            exit 1
+          else
+            echo "All Apex tests passed successfully."
+          fi
+      
+      # APEX PMD check
+      - name: Setup PMD
+        uses: legetz/setup-pmd@7.1.0
+      - name: Run PMD scan
+        run: pmd check -d force-app/main/default/classes -R apex-ruleset.xml -f text -r pmd-report.txt
+        continue-on-error: true
+      # Check PMD Report
+      - name: Check PMD Report
+        run: |
+          if grep -q "force-app/main/default/" pmd-report.txt; then
+            echo "PMD found issues in the Apex code:"
+            cat pmd-report.txt
+            exit 1
+          else
+            echo "No PMD issues found in the Apex code."
+            cat pmd-report.txt
+          fi
+
+      # Validate Changes- No Actual Deployment
+      - name: "Delta Validation"
+        run: |
+          sfdx sgd:source:delta --to "HEAD" --from "origin/main" --output "." -i .forceignore
+          echo "--- package.xml generated with added and modified metadata ---"
+          cat package/package.xml
+          echo "--- Delta Deploy ---"
+          sfdx force:source:deploy -x package/package.xml -c -u ${{ secrets.SFDC_USERNAME }}

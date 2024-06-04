@@ -1,36 +1,50 @@
-public inherited sharing class FutureMethodsClass 
+/* BULK Testing script
+List<Account> lst = new List<Account>();
+for(integer i=1; i<205;i++)
 {
-
-    @future
-    public static void sampleFutureMethod(Set<Id> contactIds)
+    Account a =new Account();
+    a.Name = 'TestBulk'+i;
+    if(Math.mod(i,2)==0)
     {
-        System.debug('future method sampleFutureMethod is called');
+        a.Location__Latitude__s = 28.628549239709997;
+    	a.Location__Longitude__s=77.35964760786091;
+    }
+    else
+    {
+     	a.Location__Latitude__s = 28.69906264694065;
+    	a.Location__Longitude__s=77.13633109437207;   
+    }
+    lst.add(a);
+}
+insert lst;    
+delete [SELECT Id,name,Location__Latitude__s, Location__Longitude__s, billingcity ,billingstate, billingcountry, billingpostalcode FROM Account where name like 'testbulk%'];
+*/
+
+public inherited sharing class UpdateBillingAddressOnAccountsBatch implements Database.Batchable<SObject>, Database.AllowsCallouts
+{
+    Set<Id> accountIdsToUpdate;
+
+    public UpdateBillingAddressOnAccountsBatch(Set<Id> accountIdsToUpdate) 
+    {
+        this.accountIdsToUpdate = accountIdsToUpdate;
     }
 
-    @future(callout=true)
-    public static void updateBillingAddress(Set<Id> accountIdsToUpdate)
+    public Database.QueryLocator start(Database.BatchableContext bc)
     {
-
         // If there is No update permission for current user on Account object then no need to proceed further.
         // Also, I could have checked for other FLS permission here itself using 
         // schema.sObjectType.Account.fields.Location__Latitude__s.isUpdatable() but I'll be using other method in code ahead
         if( !(schema.sObjectType.Account.isUpdateable() && schema.SObjectType.Account.fields.BillingCity.isUpdateable()) )
         {
-          return;  
+          return null;  
         }
-       /*
-        List<Account> accList = [SELECT 
-                                    Id,Location__Latitude__s, Location__Longitude__s 
-                                 FROM Account 
-                                 WHERE Id = :accountId];
-        Account acc;
-        if( accList?.size() > 0 )
-        {
-            acc = accList[0];
-        }
-        */
+        return Database.getQueryLocator('SELECT Id,Location__Latitude__s, Location__Longitude__s, BillingCity, BillingState, BillingPostalCOde, BillingCountry  FROM Account WHERE Id IN :accountIdsToUpdate');
+    }
+
+    public void execute(Database.BatchableContext bc, List<Account> scope)
+    {
         List<Account> listOfAccountsToUpdate = new List<Account>();
-        for( Account acc : [SELECT Id,Location__Latitude__s, Location__Longitude__s FROM Account WHERE Id IN :accountIdsToUpdate])
+        for( Account acc : scope)
         {
             Account accPopulatedWithDetails = doCalloutToFetchLocation(acc);
             if( accPopulatedWithDetails != null )
@@ -43,6 +57,12 @@ public inherited sharing class FutureMethodsClass
         {
             update listOfAccountsToUpdate;
         }
+    }
+
+
+    public void finish(Database.BatchableContext bc)
+    {
+
     }
 
     public static Account doCalloutToFetchLocation(Account acc)
@@ -87,7 +107,8 @@ public inherited sharing class FutureMethodsClass
 
         if( resultWrapper != null && resultWrapper.results != null && resultWrapper.results.size() > 0 && resultWrapper.results[0].components != null )
         {
-            acc.BillingCity = resultWrapper.results[0].components.city != null ? resultWrapper.results[0].components.city+' ' :'' + resultWrapper.results[0].components.suburb != null? resultWrapper.results[0].components.suburb + ' ':'';
+            acc.BillingCity = resultWrapper.results[0].components.suburb != null? (resultWrapper.results[0].components.suburb + ' '):'';
+            acc.BillingCity += resultWrapper.results[0].components.city != null ? resultWrapper.results[0].components.city :'';
         }
         else {
             return null;
@@ -121,7 +142,4 @@ public inherited sharing class FutureMethodsClass
         public String county;
         
     }
-    
-
-    
 }

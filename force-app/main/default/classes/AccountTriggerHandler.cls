@@ -1,9 +1,8 @@
-public without sharing class AccountTriggerHandler
+public with sharing class AccountTriggerHandler
 {
     public static void handleAfterUpdate(Map<Id, Account> newMap, Map<Id, Account> oldMap)
     {
-        system.debug('hrithik world123 ankit');
-        system.debug('Testing delta deployment 1.1 CI/CD pipeline');
+        // ############################### CLone Account with Child COntacts If Type is Customer-Direct ############################
         Set<Id> accountIdsToClone = new Set<Id>();
 
         for(Account a : newMap.values())
@@ -40,7 +39,67 @@ public without sharing class AccountTriggerHandler
                 clonedContacts.add(con);
             }
         }
-        insert clonedContacts;
+        if(Schema.SOBjectType.Contact.isCreateable() && clonedContacts != null && clonedContacts.size() > 0)
+        {
+            insert clonedContacts;
+        }    
+        // ############################### CLone Account with Child COntacts If Type is Customer-Direct ############################
 
+
+        //################################ Update Billing Address if Lat and Long are updated with values #########################
+        Set<Id> accountIdsToUpdate = new Set<Id>();
+        for(Account a : newMap.values())
+        {
+            System.debug('a.Location__Latitude__s = '+a.Location__Latitude__s);
+            System.debug('a.Location__Longitude__s = '+a.Location__Longitude__s);
+            if( a.Location__Latitude__s != null && a.Location__Longitude__s != null && (a.Location__Latitude__s != oldMap.get(a.Id).Location__Latitude__s || a.Location__Longitude__s != oldMap.get(a.Id).Location__Longitude__s ) )
+            {
+                System.debug('Location is changed and not null so making callout');
+                accountIdsToUpdate.add(a.Id);
+            }
+        }
+        if(accountIdsToUpdate.size() > 0)
+        {
+            System.debug('Calling future method with accountIdsToUpdate='+accountIdsToUpdate);
+
+            // Future method commented bcz whn i tried bulk 204 records only last 4 records were able to get updated.
+            // bcz trigger ran 2 times first on 200 rec and then on 4 rec. FOr first run, it failed due to too many callout 101.
+            // Hence I'm using batch class and setting the batch size 20 so that limits are not exceeded.
+            //FutureMethodsClass.updateBillingAddress(accountIdsToUpdate);
+
+            Database.executeBatch(new UpdateBillingAddressOnAccountsBatch(accountIdsToUpdate), 20);
+        }
+        //################################ Update Billing Address if Lat and Long are updated with values #########################
     }
+
+
+
+    public static void handleAfterInsert(Map<Id, Account> newMap)
+    {
+        System.debug('Inside handleAfterInsert method');
+        //################################ Update Billing Address if Lat and Long are updated with values #########################
+        Set<Id> accountIdsToUpdate = new Set<Id>();
+        for(Account a : newMap.values())
+        {
+            System.debug('a.Location__Latitude__s = '+a.Location__Latitude__s);
+            System.debug('a.Location__Longitude__s = '+a.Location__Longitude__s);
+            if( a.Location__Latitude__s != null && a.Location__Longitude__s != null)
+            {
+                system.debug('Location is present at time of inserting record and not null so making callout');
+                accountIdsToUpdate.add(a.Id);
+            }
+        }
+        if(accountIdsToUpdate.size() > 0)
+        {
+            System.debug('Calling future method with accountIdsToUpdate='+accountIdsToUpdate);
+            // Future method commented bcz whn i tried bulk 204 records only last 4 records were able to get updated.
+            // bcz trigger ran 2 times first on 200 rec and then on 4 rec. FOr first run, it failed due to too many callout 101.
+            // Hence I'm using batch class and setting the batch size 20 so that limits are not exceeded.
+            //FutureMethodsClass.updateBillingAddress(accountIdsToUpdate);
+
+            Database.executeBatch(new UpdateBillingAddressOnAccountsBatch(accountIdsToUpdate), 20);
+        }
+        //################################ Update Billing Address if Lat and Long are updated with values #########################
+    }
+
 }

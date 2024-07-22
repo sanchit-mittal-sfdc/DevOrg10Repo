@@ -1,0 +1,17 @@
+<apex:page controller="FetchAuthCodeAndAccessTokenVFCls">
+
+    <apex:form >
+      
+      <apex:pageMessages id="msg1"></apex:pageMessages>
+      
+      <apex:pageBlock >
+      
+          <apex:pageBlockButtons location="top">
+          
+              <apex:commandButton value="Generate Auth Code and Access Token" action="{!getAccessToken}"/>
+          
+          </apex:pageBlockButtons>
+      
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_on_Zendesk__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If this is checked, then this case will be created on zendeskCRM as well</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If this is checked, then this case will be created on zendeskCRM as well</inlineHelpText>
+    <label>Create on Zendesk?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

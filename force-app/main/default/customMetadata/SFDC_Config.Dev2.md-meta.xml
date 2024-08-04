@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Dev2</label>
+    <protected>false</protected>
+    <values>
+        <field>AccessToken__c</field>
+        <value xsi:type="xsd:string">00D6F000001gFIu!AQcAQKjARblnIU3IkCWVjsEk7aHKay8C8ZQkTmFOelooYBinIqesrB.6Zy21GQ_XFwvkXvIc3VteveSJPCx8WmAvdzXzEQBh</value>
+    </values>
+    <values>
+        <field>Access_Token_URL__c</field>
+        <value xsi:type="xsd:string">/services/oauth2/token</value>
+    </values>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Allowed_Operations_Details__c</field>
+        <value xsi:type="xsd:string">[
+    {
+        &quot;useThisForCheckingAccessToken&quot;:&quot;false&quot;,
+        &quot;operationType&quot;:&quot;Fetch Accounts&quot;,
+        &quot;methodType&quot;:&quot;GET&quot;,
+        &quot;endpointUrl&quot;:&quot;/services/data/v60.0/query/?q=SELECT+Id,Name,Type,Website,Phone+FROM+Account&quot;,
+        &quot;body&quot;:&quot;&quot;,
+        &quot;headers&quot;:&quot;Accept=application/json@Authorization=Bearer@&quot;,
+        &quot;sObjectName&quot;:&quot;Account&quot;,
+        &quot;labelFieldMap&quot;:&quot;Account Name:Name@Account Type:Type@Website:Website@Phone:Phone&quot;
+    },
+
+    {
+        &quot;useThisForCheckingAccessToken&quot;:&quot;false&quot;,
+        &quot;operationType&quot;:&quot;Create Account&quot;,
+        &quot;methodType&quot;:&quot;POST&quot;,
+        &quot;endpointUrl&quot;:&quot;/services/data/v60.0/sobjects/Account&quot;,
+        &quot;body&quot;:&quot;&quot;,
+        &quot;headers&quot;:&quot;Content-Type=application/json@Accept=application/json@Authorization=Bearer@&quot;,
+        &quot;sObjectName&quot;:&quot;Account&quot;,
+        &quot;labelFieldMap&quot;:&quot;Account Name:Name@Account Type:Type@Website:Website@Phone:Phone&quot;
+    },
+   {
+        &quot;useThisForCheckingAccessToken&quot;:&quot;true&quot;,
+        &quot;operationType&quot;:&quot;Fetch Contacts&quot;,
+        &quot;methodType&quot;:&quot;GET&quot;,
+        &quot;endpointUrl&quot;:&quot;/services/data/v60.0/query/?q=SELECT+Id,FirstName,LastName,Email+FROM+Contact&quot;,
+        &quot;body&quot;:&quot;&quot;,
+        &quot;headers&quot;:&quot;Accept=application/json@Authorization=Bearer@&quot;,
+        &quot;sObjectName&quot;:&quot;Contact&quot;,
+        &quot;labelFieldMap&quot;:&quot;First Name:FirstName@Last Name:LastName@Email Address:Email&quot;
+    }
+]</value>
+    </values>
+    <values>
+        <field>Auth_Code_URL__c</field>
+        <value xsi:type="xsd:string">/services/oauth2/authorize</value>
+    </values>
+    <values>
+        <field>ClientID__c</field>
+        <value xsi:type="xsd:string">3MVG9YDQS5WtC11q6QtRRZRYZBemqXvz5IZdKCPbjnDp4KRIeFIwiaeEaw1pxjjhSbkTxGqJcU0ueJcaPiF_0</value>
+    </values>
+    <values>
+        <field>ClientSecret__c</field>
+        <value xsi:type="xsd:string">7A01CF75ABBC9FFB20D6514B8297ECBD26261F6875F50F374AE4FD54C75B2CFA</value>
+    </values>
+    <values>
+        <field>Description__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Environment__c</field>
+        <value xsi:type="xsd:string">Production</value>
+    </values>
+    <values>
+        <field>Expires_at_Time__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Expires_in__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Instance_URL__c</field>
+        <value xsi:type="xsd:string">https://sanchitmittal2-dev-ed.my.salesforce.com</value>
+    </values>
+    <values>
+        <field>Issued_at__c</field>
+        <value xsi:type="xsd:dateTime">2024-08-04T16:11:01.000Z</value>
+    </values>
+    <values>
+        <field>Method_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Org_Type__c</field>
+        <value xsi:type="xsd:string">Salesforce</value>
+    </values>
+    <values>
+        <field>Page_Name__c</field>
+        <value xsi:type="xsd:string">FetchAuthCodeAndAccessTokenVF</value>
+    </values>
+    <values>
+        <field>Refresh_Token_URL__c</field>
+        <value xsi:type="xsd:string">/services/oauth2/token</value>
+    </values>
+    <values>
+        <field>Refresh_Token__c</field>
+        <value xsi:type="xsd:string">5Aep861..zRMyCurAUkuUmG3VNI71w4Jz.gYqwqV5cLG9jTQF3bLG8Xwf.jCOHG48PWGPVpLe5ZaSZP9JdFWYfc</value>
+    </values>
+    <values>
+        <field>Scope__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

@@ -4,11 +4,19 @@
     <protected>false</protected>
     <values>
         <field>AccessToken__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">00D28000001FhLQ!AREAQOHzfxY7BSJu50GX6.jz.t6zaZAHG1V7Wzrz0eCTRcSiNH5g6n98v7FsC9zq1fayjoT5FqOubdS0aWpdeE7I.sJXdJeY</value>
     </values>
     <values>
         <field>Access_Token_URL__c</field>
         <value xsi:type="xsd:string">/services/oauth2/token</value>
+    </values>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Allowed_Operations_Details__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Auth_Code_URL__c</field>
@@ -20,7 +28,11 @@
     </values>
     <values>
         <field>ClientSecret__c</field>
-        <value xsi:type="xsd:string">FC54C4346941C9636329599877CE0EC7A1554F4EC66CEA709F5580F79269EC64</value>
+        <value xsi:type="xsd:string">996BA19E50674E464C77F6470438028C161A714E788E40CC652BF5D65AE02D30</value>
+    </values>
+    <values>
+        <field>Description__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Environment__c</field>
@@ -36,6 +48,18 @@
     </values>
     <values>
         <field>Instance_URL__c</field>
+        <value xsi:type="xsd:string">https://sanchitmittal-dev-ed.my.salesforce.com</value>
+    </values>
+    <values>
+        <field>Issued_at__c</field>
+        <value xsi:type="xsd:dateTime">2024-07-30T11:49:41.000Z</value>
+    </values>
+    <values>
+        <field>Method_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Org_Type__c</field>
         <value xsi:nil="true"/>
     </values>
     <values>
@@ -43,8 +67,12 @@
         <value xsi:type="xsd:string">FetchAuthCodeAndAccessTokenVF</value>
     </values>
     <values>
-        <field>Refresh_Token__c</field>
+        <field>Refresh_Token_URL__c</field>
         <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Refresh_Token__c</field>
+        <value xsi:type="xsd:string">5Aep861TSESvWeug_yWSF21s9J0Vp_EvPXq7J3W.co.Wrp1.s_h3.hAJvg7OSB2m0FcLrbjr4nVuUUDqyCeZ0yT</value>
     </values>
     <values>
         <field>Scope__c</field>

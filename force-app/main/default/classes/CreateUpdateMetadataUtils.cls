@@ -42,6 +42,7 @@ public class CreateUpdateMetadataUtils implements Metadata.DeployCallback {
     }
     
     public static void createUpdateMetadata(String fullName, String label, Map<String, Object> fieldWithValuesMap){
+        System.debug('createUpdateMetadata is called with fieldWithValuesMap = '+fieldWithValuesMap);
         Metadata.CustomMetadata customMetadata =  new Metadata.CustomMetadata();
         customMetadata.fullName = fullName;
         customMetadata.label = label;
@@ -56,6 +57,13 @@ public class CreateUpdateMetadataUtils implements Metadata.DeployCallback {
         Metadata.DeployContainer mdContainer = new Metadata.DeployContainer();
         mdContainer.addMetadata(customMetadata);
         CreateUpdateMetadataUtils callback = new CreateUpdateMetadataUtils();
-        Id jobId = Metadata.Operations.enqueueDeployment(mdContainer, callback);
+
+        try {
+            Id jobId = Metadata.Operations.enqueueDeployment(mdContainer, callback);
+            System.debug('Metadata deployment time='+system.now() + ' and job ID = '+jobId);
+        } catch (Exception e) {
+            System.debug('Deployment failed to enqueue: ' + e.getMessage());
+        }
+        
     }
 }

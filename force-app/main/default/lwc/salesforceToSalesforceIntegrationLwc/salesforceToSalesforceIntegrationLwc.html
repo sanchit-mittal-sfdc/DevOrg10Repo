@@ -1,0 +1,97 @@
+<template>
+    <lightning-card>
+
+        <template if:false={loaded}>
+
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            
+        </template>
+
+        <template if:true={loaded}>
+            
+
+            <lightning-layout multiple-rows>
+
+                <template if:true={isDesktop}>
+
+                    <lightning-layout-item size="12" padding="around-medium">
+                        <div class="title">{titleVal}</div>
+                    </lightning-layout-item>
+
+                </template>
+
+                <template if:false={isDesktop}>
+
+                    <lightning-layout-item size="12" padding="around-medium">
+                        <div class="slds-text-heading_large">{titleVal}</div>
+                    </lightning-layout-item>
+                    
+                </template>
+                
+
+
+                <lightning-layout-item size="12" padding="around-medium">
+                    
+                    <lightning-layout>
+
+                        <lightning-layout-item size="12">
+
+                            <lightning-card title="List of Integrated Orgs" icon-name="standard:data_integration_hub">
+
+                                <lightning-button if:true={isDesktop} label="Refresh" onclick={refreshOrgsStatus} slot="actions" icon-name="utility:refresh" ></lightning-button>
+                                <lightning-button-icon if:false={isDesktop} onclick={refreshOrgsStatus} slot="actions" icon-name="utility:refresh" ></lightning-button-icon>
+
+                                <lightning-datatable key-field="id" 
+                                                    data={orgDetails} 
+                                                    columns={columns}
+                                                    onrowaction={handleRowAction}
+                                                    hide-checkbox-column
+                                                    show-row-number-column>
+                                </lightning-datatable>
+
+                            </lightning-card>
+
+                        </lightning-layout-item>
+
+                    </lightning-layout>
+                    
+                </lightning-layout-item>
+
+
+
+                <lightning-layout-item size="12" padding="around-medium">
+
+                    <lightning-layout multiple-rows>
+
+                        <lightning-layout-item size="12" medium-device-size="3">
+
+                            <template if:true={isOrgOptionsPresent}>
+                                <p class="slds-text-title_bold">Select an org to display its data:</p>
+                                <lightning-combobox name="orgs" value={orgSelected} onchange={handleOrgChange} placeholder="Select an org" options={orgOptions}></lightning-combobox>
+                            </template>
+
+                        </lightning-layout-item>
+
+                    </lightning-layout>
+                    
+
+                </lightning-layout-item>
+
+
+                <lightning-layout-item size="12" padding="around-medium">
+
+                    <lightning-datatable key-field="Id"
+                                        data={sObjectRecordsToDisplay}
+                                        columns={dynamicColumns}
+                                        hide-checkbox-column=
+                                        show-row-number-column>
+                                        </lightning-datatable>
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+        </template>
+
+    </lightning-card>
+</template>

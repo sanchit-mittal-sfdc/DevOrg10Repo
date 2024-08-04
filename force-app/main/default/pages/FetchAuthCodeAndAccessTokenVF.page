@@ -1,0 +1,41 @@
+<apex:page controller="FetchAuthCodeAndAccessTokenVFCls">
+
+    <script>
+        window.onload = function(){
+            let code  =   '{!$CurrentPage.parameters.code}';
+            if( code ){
+                let sfdcconfigname = sessionStorage.getItem('sfdcconfigname');
+                if (sfdcconfigname) {
+                    // Set the hidden input value to be used in the controller
+                    document.getElementById('{!$Component.theForm.sfdcconfignameField}').value = sfdcconfigname;
+                }
+                fetchAccessToken(); // Action Function
+            }
+
+            
+            let sfdcconfigname = '{!$CurrentPage.parameters.sfdcconfigname}';
+            if (sfdcconfigname) {
+                sessionStorage.setItem('sfdcconfigname', sfdcconfigname);
+            }
+        }
+    </script>
+
+    <apex:form id="theForm">
+      <apex:inputHidden id="sfdcconfignameField" value="{!sfdcconfigname}"/>
+
+      <apex:pageMessages id="msg1"></apex:pageMessages>
+      
+      <apex:actionFunction name="fetchAccessToken" status="theStatus errorMessage"
+                        action="{!getAccessToken}" reRender="theForm" />
+
+      <apex:pageBlock >
+      
+          <apex:pageBlockButtons location="top">
+          
+              <apex:commandButton reRender="theForm" value="Generate Auth Code and Access Token" action="{!getAuthCode}"/>
+          
+          </apex:pageBlockButtons>
+      
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

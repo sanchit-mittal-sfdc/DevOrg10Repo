@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<!--
 	<types>
 		<members>AccountTriggerHandler</members>
 		<members>CaseTriggerHandler</members>
@@ -29,6 +30,15 @@
 		<members>Case</members>
 		<members>Contact</members>
 		<name>CustomObject</name>
+	</types>
+	-->
+	<types>
+		<members>ApexDevNet</members>
+		<members>Dev1</members>
+		<members>GeolocationAPI</members>
+		<members>SalesforceProdDev</members>
+		<members>SalesforceSandboxScratchOrg</members>
+		<name>RemoteSiteSetting</name>
 	</types>
 	<version>60.0</version>
 </Package>

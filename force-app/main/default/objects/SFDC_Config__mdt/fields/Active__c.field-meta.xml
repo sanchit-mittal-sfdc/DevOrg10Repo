@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If it is checked, then will be shown in the list of Salesforce Orgs with status as connected/disconnected in Salesforce to Salesforce Integration LWC</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>If it is checked, then will be shown in the list of Salesforce Orgs with status as connected/disconnected in Salesforce to Salesforce Integration LWC</inlineHelpText>
+    <label>Active</label>
+    <type>Checkbox</type>
+</CustomField>

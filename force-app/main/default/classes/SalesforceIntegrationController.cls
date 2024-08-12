@@ -12,7 +12,7 @@ public inherited sharing class SalesforceIntegrationController
         
         List<SFDC_Config__mdt> sfOrgsList = [SELECT Id, DeveloperName, MasterLabel, Label, AccessToken__c, Access_Token_URL__c, Auth_Code_URL__c, ClientID__c, 
                                                     ClientSecret__c, Environment__c, Expires_at_Time__c, Expires_in__c, Instance_URL__c, Page_Name__c, Refresh_Token__c, 
-                                                    Scope__c, Issued_at__c, Description__c, Active__c, Org_Type__c, Method_Type__c, Allowed_Operations_Details__c, Refresh_Token_URL__c
+                                                    Scope__c, Issued_at__c, Description__c, Active__c, Org_Type__c, Method_Type__c, Allowed_Operations_Details__c, Refresh_Token_URL__c, Domain_URL_of_Org_To_be_Integrated__c
                                             FROM SFDC_Config__mdt
                                             WHERE Active__c = true AND Org_Type__c = 'Salesforce'];
 

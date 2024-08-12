@@ -90,6 +90,10 @@
                 <behavior>Edit</behavior>
                 <field>Refresh_Token_URL__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Domain_URL_of_Org_To_be_Integrated__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

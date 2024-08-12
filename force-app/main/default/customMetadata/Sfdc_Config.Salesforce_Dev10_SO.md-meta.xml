@@ -35,6 +35,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Domain_URL_of_Org_To_be_Integrated__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Environment__c</field>
         <value xsi:type="xsd:string">Sandbox/Scratch</value>
     </values>

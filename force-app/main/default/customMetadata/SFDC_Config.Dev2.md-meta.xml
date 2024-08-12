@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>AccessToken__c</field>
-        <value xsi:type="xsd:string">00D6F000001gFIu!AQcAQKjARblnIU3IkCWVjsEk7aHKay8C8ZQkTmFOelooYBinIqesrB.6Zy21GQ_XFwvkXvIc3VteveSJPCx8WmAvdzXzEQBh</value>
+        <value xsi:type="xsd:string">00D6F000001gFIu!AQcAQN8TmLNmDwpYNdt__elZ.4sAoRBzjsBaSth94beuzeAHJHtGWQPkyj.TmI_iGHr8NTSRwdMLL.huatPjlOVuC8lEpju.</value>
     </values>
     <values>
         <field>Access_Token_URL__c</field>
@@ -67,6 +67,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Domain_URL_of_Org_To_be_Integrated__c</field>
+        <value xsi:type="xsd:string">sanchitmittal2-dev-ed.my.salesforce.com</value>
+    </values>
+    <values>
         <field>Environment__c</field>
         <value xsi:type="xsd:string">Production</value>
     </values>
@@ -84,7 +88,7 @@
     </values>
     <values>
         <field>Issued_at__c</field>
-        <value xsi:type="xsd:dateTime">2024-08-04T16:11:01.000Z</value>
+        <value xsi:type="xsd:dateTime">2024-08-12T13:52:19.000Z</value>
     </values>
     <values>
         <field>Method_Type__c</field>
@@ -104,7 +108,7 @@
     </values>
     <values>
         <field>Refresh_Token__c</field>
-        <value xsi:type="xsd:string">5Aep861..zRMyCurAUkuUmG3VNI71w4Jz.gYqwqV5cLG9jTQF3bLG8Xwf.jCOHG48PWGPVpLe5ZaSZP9JdFWYfc</value>
+        <value xsi:type="xsd:string">5Aep861..zRMyCurAUkuUmG3VNI71w4Jz.gYqwqV5cLG9jTQF3LyNa9FdLh5Ag3iUoQTa79UvQ9n_ZIA0Mx33oj</value>
     </values>
     <values>
         <field>Scope__c</field>

@@ -38,8 +38,11 @@ public with sharing class FetchAuthCodeAndAccessTokenVFCls
             System.debug('config = '+config);
             if( config != null)
             {                
-                String baseUrl = config.Environment__c.equalsIgnoreCase('Production') ? 'https://login.salesforce.com' : 'https://test.salesforce.com';
-                System.debug('Env = '+config.Environment__c +'. Hence, baseUrl = '+baseUrl);
+                //String baseUrl = config.Environment__c.equalsIgnoreCase('Production') ? 'https://login.salesforce.com' : 'https://test.salesforce.com';
+                //System.debug('Env = '+config.Environment__c +'. Hence, baseUrl = '+baseUrl);
+
+                String baseUrl = 'https://' + config.Domain_URL_of_Org_To_be_Integrated__c;
+                System.debug('baseUrl = '+baseUrl);
                 
                 String accessTokenUrl = config.Access_Token_URL__c;
                 System.debug('accessTokenUrl = '+accessTokenUrl);
@@ -160,8 +163,11 @@ public with sharing class FetchAuthCodeAndAccessTokenVFCls
             
             String finalAuthCodeUrl; //'https://test.salesforce.com/services/oauth2/authorize?client_id=3MVG9vuHjyLKuxlGk4tw9N.0dEiTR0uQlyAEEEcVWdcj0euGbcJrMIyubaoAPP31py6Vgs8ULSLfIyQj5L6_A&redirect_uri=https://agility-page-4023-dev-ed--c.scratch.vf.force.com/apex/FetchAuthCodeAndAccessTokenVF&response_type=code';
             
-            String baseUrl = config.Environment__c.equalsIgnoreCase('Production') ? 'https://login.salesforce.com' : 'https://test.salesforce.com';
-            System.debug('Env = '+config.Environment__c +'. Hence, baseUrl = '+baseUrl);
+            //String baseUrl = config.Environment__c.equalsIgnoreCase('Production') ? 'https://login.salesforce.com' : 'https://test.salesforce.com';
+
+            String baseUrl = 'https://' + config.Domain_URL_of_Org_To_be_Integrated__c;
+            System.debug('baseUrl = '+baseUrl);
+            //System.debug('Env = '+config.Environment__c +'. Hence, baseUrl = '+baseUrl);
             
             String authCodeUrl = config.Auth_Code_URL__c;
             System.debug('authCodeUrl = '+authCodeUrl);

@@ -136,11 +136,16 @@ export default class SalesforceToSalesforceIntegrationLwc extends NavigationMixi
                         // Iterate over org details and populate map having key as OrgName and value as List of default records that were fetched(if any)
                         this.mapOrgNameToDefaultRecords.set(eachOrg.orgName, eachOrg.records );
                         debugger;
+
+
                         // populate orgOptions
-                        const label = eachOrg.orgName;
-                        const value = eachOrg.orgName;
-                        this.orgOptions.push({label, value});
-                        debugger;
+                        if(calledFrom === 'connectedCallback')
+                        {
+                            const label = eachOrg.orgName;
+                            const value = eachOrg.orgName;
+                            this.orgOptions.push({label, value});
+                            debugger;
+                        }
 
                         /*
                             ########## IMP CONCEPT
@@ -200,7 +205,7 @@ export default class SalesforceToSalesforceIntegrationLwc extends NavigationMixi
     handleRowAction(event) {
         const action = event.detail.action;
         const row = event.detail.row;
-        const sfdcConfigName = row.orgName
+        const sfdcConfigName = row.orgName;
         debugger;
         switch (action.name) {
             case 'reauthorize':

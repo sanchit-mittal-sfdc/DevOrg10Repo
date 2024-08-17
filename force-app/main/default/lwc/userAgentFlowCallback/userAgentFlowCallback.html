@@ -1,0 +1,24 @@
+<template>
+    <lightning-card>
+        RANDOM JOKE
+
+        <p>{randomJoke}</p>
+    </lightning-card>
+
+    <div>
+        <h1>Processing OAuth 2.0 Callback</h1>
+        <p>Handling the redirect and extracting the access token...</p>
+        <p>Fetching Salesforce account records...</p>
+<lightning-button label="Fetch Accounts" onclick={fetchAccounts}></lightning-button>
+        <!-- Display the account records using a lightning-datatable -->
+        <template if:true={isDataAvailable}>
+            <lightning-datatable
+                key-field="Id"
+                data={accounts}
+                columns={columns}
+                hide-checkbox-column="true"
+                if:true={accounts.length}>
+            </lightning-datatable>
+        </template>
+    </div>
+</template>

@@ -38,9 +38,10 @@ public with sharing class FetchAuthCodeAndAccessTokenVFCls
             System.debug('config = '+config);
             if( config != null)
             {                
+                // We can use this as well if you want that you should be able to integrate any random org. This is covered in user Agent Flow. hence commenting it from here.
                 //String baseUrl = config.Environment__c.equalsIgnoreCase('Production') ? 'https://login.salesforce.com' : 'https://test.salesforce.com';
                 //System.debug('Env = '+config.Environment__c +'. Hence, baseUrl = '+baseUrl);
-
+                
                 String baseUrl = 'https://' + config.Domain_URL_of_Org_To_be_Integrated__c;
                 System.debug('baseUrl = '+baseUrl);
                 
@@ -163,6 +164,7 @@ public with sharing class FetchAuthCodeAndAccessTokenVFCls
             
             String finalAuthCodeUrl; //'https://test.salesforce.com/services/oauth2/authorize?client_id=3MVG9vuHjyLKuxlGk4tw9N.0dEiTR0uQlyAEEEcVWdcj0euGbcJrMIyubaoAPP31py6Vgs8ULSLfIyQj5L6_A&redirect_uri=https://agility-page-4023-dev-ed--c.scratch.vf.force.com/apex/FetchAuthCodeAndAccessTokenVF&response_type=code';
             
+            // We can use this as well if you want that you should be able to integrate any random org. This is covered in user Agent Flow. hence commenting it from here.
             //String baseUrl = config.Environment__c.equalsIgnoreCase('Production') ? 'https://login.salesforce.com' : 'https://test.salesforce.com';
 
             String baseUrl = 'https://' + config.Domain_URL_of_Org_To_be_Integrated__c;
@@ -176,8 +178,11 @@ public with sharing class FetchAuthCodeAndAccessTokenVFCls
             String pageName = config.Page_Name__c;
             
             String orgDOmainUrl = URL.getOrgDomainURL().toExternalForm();
+
+            String redirectUri = orgDOmainUrl + '/apex/' + pageName;
+            redirectUri = EncodingUtil.urlEncode(redirectUri, 'UTF-8');
             
-            finalAuthCodeUrl = baseUrl + authCodeUrl + '?client_id=' + clientId + '&redirect_uri=' + orgDOmainUrl + '/apex/'+ pageName + '&response_type=code';
+            finalAuthCodeUrl = baseUrl + authCodeUrl + '?client_id=' + clientId + '&redirect_uri=' + redirectUri + '&response_type=code';
             System.debug('finalAuthCodeUrl = '+finalAuthCodeUrl);
             
             return new PageReference(finalAuthCodeUrl);

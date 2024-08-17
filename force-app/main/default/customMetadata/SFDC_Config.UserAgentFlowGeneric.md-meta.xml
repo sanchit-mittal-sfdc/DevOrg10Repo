@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>UserAgentFlowGeneric</label>
+    <protected>false</protected>
+    <values>
+        <field>AccessToken__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Access_Token_URL__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Allowed_Operations_Details__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Auth_Code_URL__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ClientID__c</field>
+        <value xsi:type="xsd:string">3MVG9ZL0ppGP5UrAYqpIcm8xwPWyNABNftpF4fig6Lk0.qquC6eTRl758xRUJyckGgbLgZBnI1rAg0RB2pdku</value>
+    </values>
+    <values>
+        <field>ClientSecret__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Description__c</field>
+        <value xsi:type="xsd:string">This is used for user agent flow using which a user can see data from any random org by logging into that org using the client id of connected app created in dev1. No other details are required.</value>
+    </values>
+    <values>
+        <field>Domain_URL_of_Org_To_be_Integrated__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Environment__c</field>
+        <value xsi:type="xsd:string">Production</value>
+    </values>
+    <values>
+        <field>Expires_at_Time__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Expires_in__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Instance_URL__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Issued_at__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Method_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Org_Type__c</field>
+        <value xsi:type="xsd:string">Salesforce</value>
+    </values>
+    <values>
+        <field>Page_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Refresh_Token_URL__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Refresh_Token__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Scope__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

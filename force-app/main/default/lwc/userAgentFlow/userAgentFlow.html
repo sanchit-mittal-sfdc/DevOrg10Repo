@@ -1,0 +1,58 @@
+<template>
+
+    <lightning-card title="OAuth 2.0 User-Agent Flow">
+
+        <lightning-layout multiple-rows>
+
+            <template if:false={isLoaded}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+
+            <template if:true={isLoaded}>
+
+                <lightning-layout-item padding="around-small" size="12">
+
+                    <lightning-button variant="brand" label="Login Using Salesforce" onclick={startUserAgentFlow}></lightning-button>
+
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" size="12">
+
+                    <c-generic-searchable-dropdown onoptionselected={optionSelectedHandler} dropdown-options={sObjectOptions} dropdown-options-original-set={sObjectOptions}></c-generic-searchable-dropdown>
+
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" size="12">
+
+                    <lightning-datatable key-field="fieldApiName"
+                                         data={fieldsData}
+                                         columns={fieldColumns}
+                                         onrowselection={handleFieldsTableRowSelectionUnselection}>
+                                        </lightning-datatable>
+                    
+
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" size="12">
+
+
+                    <lightning-button variant="brand" label="Query Data" onclick={fetchRecordsFromOrg}></lightning-button>
+
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" size="12">
+
+                    <lightning-datatable key-field="Id"
+                                         data={fetchedRecords}
+                                         columns={dynamicColumnsForFetchedRecords}>
+                                        </lightning-datatable>
+                    
+
+                </lightning-layout-item>
+
+            </template>
+
+        </lightning-layout>
+    </lightning-card>
+
+</template>

@@ -1,0 +1,58 @@
+<template>
+    
+    <lightning-layout multiple-rows>
+
+        <lightning-layout-item size="8">
+
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container">
+                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                
+                                <!--
+                                <input type="text" onfocus={showDropdownOptions} onkeyup={doFiltering} class="slds-input slds-combobox__input slds-has-focus" id="combobox-id-15" aria-activedescendant="option1" aria-autocomplete="list" aria-controls="listbox-id-12" aria-expanded="true" aria-haspopup="listbox"  role="combobox"
+                                    placeholder="Search..." />
+                                <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                    <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                    </svg>
+                                </span>
+                                -->
+                                <lightning-input type="search" onfocus={showDropdownOptions} onchange={doFiltering} label="Please select the sObject" placeholder="Search..." ></lightning-input>
+
+                            </div>
+
+                            <template if:true={areDropdownValuesVisible}>
+                                <div id="listbox-id-12" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox"  tabindex="0" aria-busy="false">
+                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+
+                                        <template for:each={dropdownOptions} for:item="option">
+                                            <li role="presentation" class="slds-listbox__item" key={option.value} >
+                                                <div onclick={handleOptionSelection} data-optionlabel={option.label} data-optionvalue={option.value}  class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+                                                    <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                                    <span class="slds-media__body">
+                                                    <span class="slds-truncate" title={option.value}>{option.label} ({option.value})</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </lightning-layout-item>
+
+        <lightning-layout-item size="4" padding="around-small" >
+
+            <lightning-button label="Hide values" onclick={hideDropdownOptions} class="slds-grid_vertical-align-start"></lightning-button>
+
+        </lightning-layout-item>
+
+    </lightning-layout>
+
+</template>

@@ -18,7 +18,7 @@
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Salesforce to Salesforce Integration</masterLabel>
+    <masterLabel>oAuth 2.0 Web Server Flow</masterLabel>
     <template>
         <name>flexipage:defaultAppHomeTemplate</name>
     </template>

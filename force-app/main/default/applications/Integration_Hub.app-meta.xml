@@ -2,20 +2,19 @@
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <brand>
         <headerColor>#0070D2</headerColor>
-        <!--<logo>IMG20240707180816</logo>
-        <logoVersion>1</logoVersion>-->
-        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
-    <description>All integration stuff</description>
+    <description>All Integration</description>
     <formFactors>Small</formFactors>
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-    <label>Integration RnD</label>
+    <label>Integration Hub</label>
     <navType>Standard</navType>
-    <tabs>Salesforce_to_Salesforce_Integration</tabs>
+    <tabs>oAuth_2_0_User_Agent_Flow</tabs>
+    <tabs>oAuth_2_0_Web_Server_Flow</tabs>
     <tabs>standard-Account</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>Salesforce_Integration_UtilityBar</utilityBar>
+    <utilityBar>Integration_Hub_UtilityBar</utilityBar>
 </CustomApplication>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Created by Lightning App Builder</description>
+    <flexiPage>oAuth_2_0_Web_Server_Flow</flexiPage>
+    <label>oAuth 2.0 Web Server Flow</label>
+    <motif>Custom75: IP Phone</motif>
+</CustomTab>

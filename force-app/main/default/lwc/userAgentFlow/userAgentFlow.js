@@ -4,7 +4,7 @@ import getUserAgentFlowGeneric from '@salesforce/apex/UserAgentFlowController.ge
 import fetchSObjectListFromLoggedIndOrg from '@salesforce/apex/UserAgentFlowController.fetchSObjectListFromLoggedIndOrg';
 import fetchFieldsOfSelectedObject from '@salesforce/apex/UserAgentFlowController.fetchFieldsOfSelectedObject';
 import fetchRecords from '@salesforce/apex/UserAgentFlowController.fetchRecords';
-
+import {toUpper, showToastMessage} from 'c/lwcUtils';
 
 const FIELD_COLUMNS = [
 
@@ -23,6 +23,11 @@ const FIELD_COLUMNS = [
 export default class UserAgentFlow extends LightningElement {
 
     isLoaded = true;
+    pageTopTitle = 'Please log in to your Salesforce org to query records.';
+    isUserLoggedIn = false;
+    areFieldsPopulated = false;
+    areRecordsFetched = false;
+    showFieldsTable = true;
     clientId;
     userAgentFlowConfig;
     accessToken;
@@ -34,6 +39,8 @@ export default class UserAgentFlow extends LightningElement {
     @track fieldsData = [];
     @track fetchedRecords = [];
     @track dynamicColumnsForFetchedRecords = [];
+    @track selectedRowsInFieldsTable = [];
+    soqlQueryClause = '';
 
     connectedCallback() {
         //   this.startOAuthFlow();
@@ -117,6 +124,7 @@ export default class UserAgentFlow extends LightningElement {
         if( urlFromHash && urlFromHash.length > 0 )
         {
             console.log('Access token is present in url so will now be extracting it from url');
+            this.isUserLoggedIn = true;
 
             const urlAfterHashContainingJustParams = urlFromHash.substring(1);
 
@@ -129,30 +137,44 @@ export default class UserAgentFlow extends LightningElement {
             if(this.accessToken && this.accessToken.length >0 && this.instanceUrl && this.instanceUrl.length > 0)
             {
                 console.log('access token and instance url is successfully extracted from url');
+                this.pageTopTitle = `You are successfully connected to: ${this.instanceUrl}`;
+                
 
+                /*
                 Toast.show({
                     label:"Success",
                     message:"Salesforce Org(" +this.instanceUrl + ") is successfully logged in",
                     variant:"success",
                     mode:"dismissible"
-                }, this);
+                }, this);*/
+
+                showToastMessage(this, "Success", `Salesforce Org (${this.instanceUrl} ) is successfully authorized.`, "success", "dismissible" );
 
                 this.getSObjectListFromLoggedIndOrg();
+
+                // IMP:: Remove the access token from the URL fragment to prevent it from being exposed in the browser's history
+                //window.location.replace( window.location.href.split('#')[0] );- THIS  is RELOADING the component and access token is lost
+                
+                // Below code will solve the purpose. NOTE:- DUring dev, you will have to refresh the page to see the changes so plz coment the below line during dev 
+                window.history.replaceState(null, null, window.location.href.split('#')[0]);
+
             }
             else
             {
                 console.log('failed to extract access token from url');
+
             }
         }
         else
         {
             console.log('Access token is not present in url');
+            this.isUserLoggedIn = false;
         }
 
         
     }
 
-
+    // to fetch the custom metadata SFDCConfig
     @wire(getUserAgentFlowGeneric, {})
     wiredConfig({error,data}){
 
@@ -175,6 +197,7 @@ export default class UserAgentFlow extends LightningElement {
 
 
 
+    // This is called when user clicks "login using salesforce"
     startUserAgentFlow() {
         debugger;
         const clientId = '3MVG9ZL0ppGP5UrAYqpIcm8xwPWyNABNftpF4fig6Lk0.qquC6eTRl758xRUJyckGgbLgZBnI1rAg0RB2pdku';
@@ -187,7 +210,22 @@ export default class UserAgentFlow extends LightningElement {
         const responseType = 'token'; // ONLY THIS MAKE IT A USER AGENT FLOW...in web server flow response_type=code but here it is directly token.
 
         // Construct the authorization URL
-        const authUrl = `${authEndpoint}?response_type=${responseType}&client_id=${clientId}&redirect_uri=${redirectUri}`;
+
+        /**
+         *  V IMP 
+         * 
+         *  ISSUE : I was facing: on clicking the login button...i dont understand why it is remembering the previous logged in instance URL...so instead of 
+        *           opening genric login.salesforce.com, it is opening previously logged in instance URL thereby not allowing the user to login into another 
+        *           salesforce org which has a different instance URL..
+
+
+         * 
+         * 
+         * Solution: Explanation:
+                    prompt=login: This parameter tells Salesforce to always prompt the user to log in, even if there is an existing session with the Salesforce instance.
+         */
+
+        const authUrl = `${authEndpoint}?response_type=${responseType}&client_id=${clientId}&redirect_uri=${redirectUri}&prompt=login`;
 
         // Redirect the user to the Salesforce authorization page
         /**
@@ -200,9 +238,10 @@ export default class UserAgentFlow extends LightningElement {
 
 
 
-
+    // to fetch the list of sObjects from logged in org
     getSObjectListFromLoggedIndOrg()
     {
+        this.isLoaded = false;
         fetchSObjectListFromLoggedIndOrg({accessToken : this.accessToken, instanceUrl : this.instanceUrl}).then( response => {
             debugger;
             console.log('response='+response);
@@ -215,7 +254,7 @@ export default class UserAgentFlow extends LightningElement {
                     return {label, value};
                 });
             }
-            
+            this.isLoaded = true;
 
         }).catch(error => {
 
@@ -227,15 +266,17 @@ export default class UserAgentFlow extends LightningElement {
                 variant:"error",
                 mode:"sticky"
             }, this);
+            this.isLoaded = true;
         })
     }
 
 
-    // this i called when the user selects an option from the dropdown
+    // this i called when the user selects an option from the SOBJECTS dropdown child comp...i.e a event gets fired from child which is handled here in parent component
     optionSelectedHandler(event)
     {
         debugger;
         this.isLoaded = false;
+        this.areRecordsFetched = false;
         this.selectedObjectApiName = event.detail.selectedOptionValue;
         this.selectedObjectLabel = event.detail.selectedOptionLabel;
         console.log('In parent comp, optionSelectedHandler: this.selectedObjectApiName='+this.selectedObjectApiName);
@@ -246,7 +287,10 @@ export default class UserAgentFlow extends LightningElement {
             
             this.fieldsData = response;
             this.isLoaded = true;
-            
+            this.areFieldsPopulated = true;
+            this.showFieldsTable = true;
+            this.selectedRowsInFieldsTable = [];
+            this.soqlQueryClause = '';
         }).catch(error =>{
             Toast.show({
                 label:"Error",
@@ -254,16 +298,24 @@ export default class UserAgentFlow extends LightningElement {
                 variant:"error",
                 mode:"sticky"
             }, this);
+            this.areFieldsPopulated = false;
         })
     }
-    
 
-    // this is called when a user selects/de-selects a field in the fields data table
-    handleFieldsTableRowSelectionUnselection(event){
 
-        debugger;
-        const currentRow = event.detail.row;
-        debugger;        
+    // handleFieldsTableRowSelection
+    handleFieldsTableRowSelection(event){
+
+    }
+
+
+
+    // this will returm the value selected from the SOBJECTS dropdown
+    get objectSelectedVal(){
+        if( this.selectedObjectLabel && this.selectedObjectApiName )
+            return `${this.selectedObjectLabel} (${this.selectedObjectApiName})`;
+        else
+            return '';
     }
 
 
@@ -271,7 +323,9 @@ export default class UserAgentFlow extends LightningElement {
     fetchRecordsFromOrg(event){
         debugger;
         this.isLoaded = false;
-        const fieldsTable = this.template.querySelector('lightning-datatable');
+        this.areRecordsFetched = false;
+        //const fieldsTable = this.template.querySelector('lightning-datatable');
+        const fieldsTable = this.template.querySelector('[data-tablename="FieldsTable"]');
 
         if(fieldsTable)
         {
@@ -279,10 +333,19 @@ export default class UserAgentFlow extends LightningElement {
 
             if(selectedRows && selectedRows.length > 0)
             {
-                const selectedFieldsString = Array.from(selectedRows.map(eachRow=> eachRow.fieldApiName)).join(',');
+                //const selectedFieldsString = Array.from(selectedRows.map(eachRow=> eachRow.fieldApiName)).join(',');
+                this.selectedRowsInFieldsTable = selectedRows.map(eachRow=> eachRow.fieldApiName);
+                const selectedFieldsString = Array.from(this.selectedRowsInFieldsTable).join(',');
                 console.log(` selectedFieldsString = ${selectedFieldsString}`);
 
-                fetchRecords({sObjectApiName:this.selectedObjectApiName, commaSeparatedFieldsList:selectedFieldsString, accessToken:this.accessToken, instanceUrl:this.instanceUrl}).then(response =>{
+                const soqlQueryComp = this.template.querySelector('[data-name="soqlAdditionalClauses"]');
+                if(soqlQueryComp)
+                {
+                    this.soqlQueryClause = soqlQueryComp.value;
+                }
+
+                console.log('Passing soqlQueryClause = '+this.soqlQueryClause);
+                fetchRecords({sObjectApiName:this.selectedObjectApiName, commaSeparatedFieldsList:selectedFieldsString, accessToken:this.accessToken, instanceUrl:this.instanceUrl, soqlQueryClauseVal:this.soqlQueryClause}).then(response =>{
                     debugger;
 
                     this.fetchedRecords = response;
@@ -293,6 +356,8 @@ export default class UserAgentFlow extends LightningElement {
                         return {label, fieldName};
                     })
                     this.isLoaded = true;
+                    this.areRecordsFetched = true;
+                    this.showFieldsTable = false;
                 }).catch(error =>{
 
                     Toast.show({
@@ -302,6 +367,7 @@ export default class UserAgentFlow extends LightningElement {
                         mode:"sticky"
                     }, this);
                     this.isLoaded = true;
+                    this.areRecordsFetched = false;
                 })
 
             }
@@ -314,9 +380,44 @@ export default class UserAgentFlow extends LightningElement {
                     mode:"dismissible"
                 },this);
                 this.isLoaded = true;
+                this.areRecordsFetched = false;
             }
         }
     }
 
+    // togglle the visibility of fields table
+    doHideOrShowFieldsTable(event){
+        this.showFieldsTable = !this.showFieldsTable;
+    }
+
+
+    // dynamic label of hide/show fields button based on whether the fields table is visible or not
+    get hideShowFieldsTableButtonLabel(){
+        return this.showFieldsTable? 'Hide Fields':'Show Fields';
+    }
+
+
+    // dynamic icon of hide/show fields button based on whether the fields table is visible or not
+    get hideShowFieldsTableButtonIcon(){
+        return this.showFieldsTable? 'utility:hide':'utility:preview';
+    }
+
+    // dynamically generate fields table title using the selected object value
+    get fieldsTableTitle(){
+        return `Please select at least 1 field of sObject: ${this.selectedObjectLabel} (${this.selectedObjectApiName}) to query records`;
+    }
+
+    // dynamically generate fetched records table title using the selected object value
+    get fetchedRecordsTableTitle(){
+        const fetchedRecordsCount = this.fetchedRecords? this.fetchedRecords.length : 0;
+        return `${fetchedRecordsCount} record(s) fetched from ${this.selectedObjectLabel} (${this.selectedObjectApiName})`;
+            
+    }
+
+
+    // to logout
+    doLogOut(event){
+        window.location.href = window.location.origin + '/lightning/n/oAuth_2_0_User_Agent_Flow';
+    }
 
 }

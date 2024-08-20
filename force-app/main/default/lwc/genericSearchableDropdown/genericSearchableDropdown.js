@@ -4,6 +4,7 @@ export default class GenericSearchableDropdown extends LightningElement {
 
     @api dropdownOptions;
     @api dropdownOptionsOriginalSet;
+    @api objectSelected;
     filteredOptions = [];
     areDropdownValuesVisible = false;
     selectedOptionValue;

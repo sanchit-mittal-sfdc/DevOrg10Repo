@@ -2,6 +2,6 @@
 <CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Created by Lightning App Builder</description>
     <flexiPage>oAuth_2_0_User_Agent_Flow</flexiPage>
-    <label>oAuth 2.0 User Agent Flow</label>
+    <label>OAuth 2.0 User Agent Flow</label>
     <motif>Custom76: Keys</motif>
 </CustomTab>

@@ -132,7 +132,7 @@ public inherited sharing class UserAgentFlowController
 
     // This is used for fetching records of selected object and fields
     @AuraEnabled(cacheable=true)
-    public static List<Object> fetchRecords(String sObjectApiName, String commaSeparatedFieldsList, String accessToken, String instanceUrl)
+    public static List<Object> fetchRecords(String sObjectApiName, String commaSeparatedFieldsList, String accessToken, String instanceUrl, String soqlQueryClauseVal)
     {
         if( String.isBlank(sObjectApiName) || String.isBlank(commaSeparatedFieldsList) || String.isBlank(accessToken) || String.isBlank(instanceUrl) )
         {
@@ -143,6 +143,14 @@ public inherited sharing class UserAgentFlowController
         HttpRequest req = new HttpRequest();
 
         String soqlQuery = 'SELECT '+commaSeparatedFieldsList+' FROM '+sObjectApiName;
+
+        if(String.isNotBlank(soqlQueryClauseVal))
+        {
+            soqlQuery = soqlQuery + ' ' + soqlQueryClauseVal;
+        }
+
+        System.debug('soqlQueryClauseVal = '+soqlQueryClauseVal);
+        System.debug('soqlQuery = '+soqlQuery);
 
         String endPointUrl = instanceUrl + '/services/data/v58.0/query/?q=' + EncodingUtil.urlEncode(soqlQuery, 'UTF-8');
         System.debug('endPointUrl is ============ '+endPointUrl);

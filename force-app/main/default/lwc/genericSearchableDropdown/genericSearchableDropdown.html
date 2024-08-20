@@ -19,7 +19,7 @@
                                     </svg>
                                 </span>
                                 -->
-                                <lightning-input type="search" onfocus={showDropdownOptions} onchange={doFiltering} label="Please select the sObject" placeholder="Search..." ></lightning-input>
+                                <lightning-input value={objectSelected} type="search" onfocus={showDropdownOptions} onchange={doFiltering} label="Please select the sObject" placeholder="Search..." ></lightning-input>
 
                             </div>
 
@@ -49,7 +49,7 @@
 
         <lightning-layout-item size="4" padding="around-small" >
 
-            <lightning-button label="Hide values" onclick={hideDropdownOptions} class="slds-grid_vertical-align-start"></lightning-button>
+            <lightning-button if:true={areDropdownValuesVisible} label="Hide values" onclick={hideDropdownOptions} class="slds-grid_vertical-align-start"></lightning-button>
 
         </lightning-layout-item>
 

@@ -1,0 +1,6 @@
+<apex:page showHeader="false" sidebar="false" controller="PkceRedirectVFController">
+    <script>
+        // Redirect to your LWC page with the c__code parameter
+        window.location.href = '{!redirectUrl}';
+    </script>
+</apex:page>

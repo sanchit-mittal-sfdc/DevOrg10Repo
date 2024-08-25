@@ -77,6 +77,19 @@ public static Blob getEncryptionKeyBlob()
 }
 
 
+/* Execute this method in Developer Console to generate the key
+  String encryptionKey = EncryptionKeyGenerator.generateEncryptionKey();
+  System.debug('Generated Encryption Key: ' + encryptionKey);
+*/
+public static String generateEncryptionKey() 
+{
+    // Generate a 32-byte random key
+    Blob key = Crypto.generateAesKey(256); // 256-bit key for AES-256
+    // Encode the key in Base64 for storage
+    String encodedKey = EncodingUtil.base64Encode(key);
+    return encodedKey;
+}
+
 
     // Custom Exception class
     public class CalloutHelperException extends Exception {}

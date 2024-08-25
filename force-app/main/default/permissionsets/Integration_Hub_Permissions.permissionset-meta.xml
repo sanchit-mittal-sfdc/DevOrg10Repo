@@ -490,6 +490,10 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabSettings>
+        <tab>Client_Credentials_Flow</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>OAuthFlowDetails__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>

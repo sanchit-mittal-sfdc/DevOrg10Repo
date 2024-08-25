@@ -225,7 +225,7 @@ public inherited sharing class ClientCredentialsFlowLwcController
 
                     Map<String, object> customMetadataFieldsMap = new Map<String, object>{'AccessToken__c' => encryptedAccessToken};
 
-                    CreateUpdateMetadataUtils.createUpdateMetadata('SFDC_Config__mdt.'+SFDCConfigRecName, 'SFDCConfigRecName', customMetadataFieldsMap);
+                    CreateUpdateMetadataUtils.createUpdateMetadata('SFDC_Config__mdt.'+SFDCConfigRecName, SFDCConfigRecName, customMetadataFieldsMap);
                 }
                 
 

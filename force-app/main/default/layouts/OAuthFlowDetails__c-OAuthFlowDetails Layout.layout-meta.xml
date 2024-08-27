@@ -42,6 +42,10 @@
                 <behavior>Edit</behavior>
                 <field>Application__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LinkedIn_User_Id__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

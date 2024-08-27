@@ -1,0 +1,21 @@
+
+/* CSS file in your LWC component */
+.page-title-loggedin {
+    font-size: 1rem; /* Adjust the size to your preference */
+    font-weight: bold; /* Makes the title bold */
+    color: #2c3e50; /* Dark shade for the title */
+    margin: 20px 0; /* Adds space above and below the title */
+    letter-spacing: 1px; /* Adds spacing between letters for better readability */
+    border-bottom: 2px solid #2980b9; /* Adds a thin line below the title */
+    padding-bottom: 10px; /* Adds padding below the title */
+}
+
+.page-title-not-loggedin {
+    font-size: 1.2rem; /* Adjust the size to your preference */
+    font-weight: bold; /* Makes the title bold */
+    color: #2c3e50; /* Dark shade for the title */
+    margin: 20px 0; /* Adds space above and below the title */
+    letter-spacing: 1px; /* Adds spacing between letters for better readability */
+    padding-bottom: 10px; /* Adds padding below the title */
+}
+

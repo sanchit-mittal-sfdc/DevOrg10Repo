@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>SFDCConfigRecName</label>
+    <label>Linkedin_Config</label>
     <protected>false</protected>
     <values>
         <field>AccessToken__c</field>
-        <value xsi:type="xsd:string">xcCTHIUwcfzrYA6KzorAg4slaVfZZlxiCcNEr4waL+njNcu2jySeB18jEC9QrC6Ockoy44G9J8hQJm32s6Fd6cvXvepMyA3CN3EppnwTwcJFnBsHS0uqMHdua3jfZoG+7F/+HpslgB6MCq/KjkZJrConFvERB654HzBDIlg2ohPmwXHPLs1hnyKFz+GdOmI7</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Access_Token_URL__c</field>
@@ -24,19 +24,19 @@
     </values>
     <values>
         <field>ClientID__c</field>
-        <value xsi:type="xsd:string">3MVG9GCMQoQ6rpzR2Hw1j9iu1E0stYlykEJ74HJ6XcLzYCnYNv7sP_7Z_tEQaCJCNJQ9jvywncP2Kjai2z746</value>
+        <value xsi:type="xsd:string">86deog7dopsds9</value>
     </values>
     <values>
         <field>ClientSecret__c</field>
-        <value xsi:type="xsd:string">E9A021B716A62E683DA435C4DF6A7F262150DA58C5E1DD8752F15E0D635AB506</value>
+        <value xsi:type="xsd:string">MEbzRYroiPZxaQrS</value>
     </values>
     <values>
         <field>Description__c</field>
-        <value xsi:type="xsd:string">I have created the app in Dev 11 since the newlyu launched SALESFORCE INTEGRATION license was not available in dev1. Also, here we cannot make call to login.salesforce.com for access token but should be my domain.</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Domain_URL_of_Org_To_be_Integrated__c</field>
-        <value xsi:type="xsd:string">sanchitmittal11-dev-ed.develop.my.salesforce.com</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Environment__c</field>
@@ -64,7 +64,7 @@
     </values>
     <values>
         <field>Org_Type__c</field>
-        <value xsi:type="xsd:string">Salesforce</value>
+        <value xsi:type="xsd:string">LinkedIn</value>
     </values>
     <values>
         <field>Page_Name__c</field>
@@ -80,10 +80,10 @@
     </values>
     <values>
         <field>Scope__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">openid profile email w_member_social</value>
     </values>
     <values>
         <field>State__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">ankit</value>
     </values>
 </CustomMetadata>

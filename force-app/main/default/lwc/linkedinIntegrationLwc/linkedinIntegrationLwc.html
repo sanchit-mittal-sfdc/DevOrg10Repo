@@ -1,0 +1,62 @@
+<template>
+
+    <template if:true={isLoaded}>
+
+        <lightning-card>
+            
+            <!-- Logout button slot =actions of lighting card-->
+            <lightning-button if:true={isUserLoggedIn} variant="destructive" slot="actions" label="Log Out" onclick={doLogOut}></lightning-button>
+
+            <!--Title in title slot of card-->
+            <div class={titleClass} slot="title">{pageTopTitle}</div>
+
+            <lightning-layout multiple-rows >
+
+                <template if:false={isUserLoggedIn}>
+
+                    <lightning-layout-item padding="around-medium" size="12">
+
+                        <!-- Log in button at center if user is currently not logged in-->
+                        <div class="slds-align_absolute-center">
+                            <lightning-button variant="brand" label="Connect with LinkedIn" onclick={initiateLinkedInAuthCodeFlow}></lightning-button>
+                        </div>
+
+                    </lightning-layout-item>
+                    
+                </template>
+
+
+                <template if:true={isUserLoggedIn}>
+
+                    <lightning-layout-item padding="around-medium" size="12">
+
+                        <!--Show text area once user is logged in to enter the post-->
+                        <p class="slds-text-title_bold">Please enter your post:</p>
+                        <lightning-textarea data-name = "postContent" placeholder="Type here..." ></lightning-textarea>
+
+                    </lightning-layout-item>
+
+
+                    <lightning-layout-item padding="around-medium" size="12">
+
+                        <!--Button to publish the post-->
+                        <lightning-button variant="brand" label="Post on LinkedIn" onclick={doPostOnLinkedIn}></lightning-button>
+
+                    </lightning-layout-item>
+                    
+                </template>
+
+
+            </lightning-layout>
+
+        </lightning-card>
+
+    </template>
+
+    <!-- Show Spinner when loading-->
+    <template if:false={isLoaded}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    <!-- Show Spinner when loading-->
+
+</template>

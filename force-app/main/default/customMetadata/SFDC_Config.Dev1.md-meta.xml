@@ -105,4 +105,8 @@
         <field>Scope__c</field>
         <value xsi:nil="true"/>
     </values>
+    <values>
+        <field>State__c</field>
+        <value xsi:nil="true"/>
+    </values>
 </CustomMetadata>

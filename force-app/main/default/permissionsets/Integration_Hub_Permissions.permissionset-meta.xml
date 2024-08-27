@@ -447,6 +447,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>OAuthFlowDetails__c.LinkedIn_User_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>OAuthFlowDetails__c.Refresh_Token__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -491,6 +496,10 @@
     </objectPermissions>
     <tabSettings>
         <tab>Client_Credentials_Flow</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>LinkedIn_Integration</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

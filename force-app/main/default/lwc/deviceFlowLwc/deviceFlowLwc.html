@@ -1,0 +1,21 @@
+<template>
+    <div class="body">
+        <div class="bg">
+        
+        
+                <div class="slds-m-around_medium">
+                    <template if:true={pollingStarted}>
+                        <p class="verification-text">Please open the following link in your browser:</p>
+                        <a href={verificationUrl} target="_blank" class="verification-url">{verificationUrl}</a>
+                        <p class="code-text">Enter code:</p>
+                        <p class="user-code">{userCode}</p>
+                    </template>
+                    <template if:false={pollingStarted}>
+                        <div class="slds-m-around_medium slds-p-around_large">
+                            <lightning-button label="Sign In" onclick={signInHandler}></lightning-button>
+                        </div>
+                    </template>
+                </div>
+        </div>
+    </div>
+</template>

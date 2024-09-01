@@ -1,0 +1,35 @@
+.slds-card {
+    background: url('/resource/netflix1/netflix-logo1.webp') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+}
+
+.verification-url {
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.user-code {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.verification-text,
+.code-text {
+    font-size: 16px;
+    color: #ffffff;
+}
+.body, html { 
+    height: 100%; 
+    margin: 0; 
+} 
+.bg { 
+/* The image used */ background-image: url("https://variety.com/wp-content/uploads/2020/05/netflix-logo.png"); 
+height: 500px; 
+background-position: center; 
+background-repeat: no-repeat; 
+background-size: cover; 
+}

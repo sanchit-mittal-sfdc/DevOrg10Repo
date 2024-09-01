@@ -499,6 +499,10 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
+        <tab>Device_IoT_Flow</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>LinkedIn_Integration</tab>
         <visibility>Visible</visibility>
     </tabSettings>

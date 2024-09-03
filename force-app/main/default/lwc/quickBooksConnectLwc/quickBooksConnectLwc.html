@@ -1,0 +1,93 @@
+<template>
+    <!-- Display a spinner while data is loading -->
+    <template if:false={isLoaded}>
+        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </template>
+
+    <template if:true={isLoaded}>
+
+        <!-- Main card container for the QuickBooks sync functionality -->
+        <lightning-card title="Sync SF Products in QuickBooks" icon-name="standard:form">
+
+            <!-- Display the authorization button if the user is not logged in -->
+            <div if:false={isUserLoggedIn} class="slds-text-align_center">
+                <p>
+                    <lightning-button label="Authorize QuickBooks" onclick={handleAuthorizeQuickBooksClick}></lightning-button>
+                </p>
+            </div>
+
+            <!-- Content to display when the user is logged in -->
+            <template if:true={isUserLoggedIn}>
+
+                <lightning-button slot="actions" icon-name="utility:refresh" variant="brand" label="Refresh" onclick={handleRefreshClick}></lightning-button>
+
+                <!-- Layout to organize the UI components -->
+                <lightning-layout multiple-rows>
+
+                    <!-- Container for the pagination controls -->
+                    <lightning-layout-item size="12" padding="around-medium">
+
+                        <lightning-layout>
+
+                            <!-- Dropdown for selecting page size -->
+                            <lightning-layout-item size="2">
+                                <lightning-combobox
+                                    label="Select Page Size"
+                                    value={defaultPageSize}
+                                    onchange={handlePageSizeChange}
+                                    options={pageSizeOptions}
+                                    data-id="pageSizeSelector">
+                                </lightning-combobox>
+                            </lightning-layout-item>
+
+                            <!-- Empty layout item for spacing -->
+                            <lightning-layout-item size="2"></lightning-layout-item>
+
+                            <!-- Pagination buttons for navigating through pages -->
+                            <lightning-layout-item size="4" padding="horizontal-small">
+                                <div class="slds-align_absolute-center">
+                                    <lightning-button-group>
+                                        <!-- Button to navigate to the first page -->
+                                        <lightning-button disabled={shouldBackwardNavigationBeDiabled} onclick={handleFirstPageClick} variant="brand" label="<< First" title="Go to first page."></lightning-button>
+                                        <!-- Button to navigate to the previous page -->
+                                        <lightning-button disabled={shouldBackwardNavigationBeDiabled} onclick={handlePreviousPageClick} variant="brand" label="< Prev" title="Go to previous page."></lightning-button>
+                                        <!-- Button to navigate to the next page -->
+                                        <lightning-button disabled={shouldForwardNavigationBeDiabled} onclick={handleNextPageClick} variant="brand" label="Next >" title="Go to next page."></lightning-button>
+                                        <!-- Button to navigate to the last page -->
+                                        <lightning-button disabled={shouldForwardNavigationBeDiabled} onclick={handleLastPageClick} variant="brand" label="Last >>" title="Go to last page."></lightning-button>
+                                    </lightning-button-group>
+                                    
+                                </div>
+                            </lightning-layout-item>
+
+                            <!-- Display the current page number and total pages -->
+                            <lightning-layout-item size="4">
+                                <div class="slds-align_absolute-center">
+                                    <lightning-button variant="success" icon-name="utility:sync" label="Sync with QuickBooks" onclick={handleSyncClick}></lightning-button>
+                                </div>
+                            </lightning-layout-item>
+
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <!-- Datatable to display the paginated records with serial numbers -->
+                    <lightning-layout-item size="12" padding="around-small">
+                        <lightning-formatted-text value={currentPageNumberDetails}></lightning-formatted-text>
+                        <lightning-datatable 
+                            data-id = "productsTable"
+                            data={paginatedRecordsWithSno}
+                            columns={columns}
+                            key-field="Id"
+                            max-row-selection="10"
+                            selected-rows={selectedRowsInTable}>
+                        </lightning-datatable>
+                    </lightning-layout-item>
+
+                </lightning-layout>
+
+            </template>
+
+        </lightning-card>
+
+    </template>
+</template>

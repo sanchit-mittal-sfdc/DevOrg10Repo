@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     if: github.event_name == 'push'
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       # Install Salesforce CLI
       - name: Install Salesforce CLI
@@ -51,9 +51,22 @@ jobs:
           echo "--- Delta Deploy ---"
           sf project deploy start -x package/package.xml -o ${{ secrets.SFDC_USERNAME }}
 
+      # Assign all Permission Sets to the deploying user
+      - name: "Assign Permission Sets to User"
+        run: |
+          # Get the current user's username
+          current_user=$(sf org display --json | jq -r '.result.username')
+
+          # Assign each permission set to the current user
+          for permset in $(find force-app/main/default/permissionsets -type f -name "*.permissionset-meta.xml"); do
+            permset_name=$(basename "$permset" .permissionset-meta.xml)
+            echo "Assigning Permission Set: $permset_name to $current_user"
+            sf user permset assign --permsetname "$permset_name" --targetusername "$current_user"
+          done
+
   validate:
     if: github.event_name == 'pull_request'
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       # Install Salesforce CLI
       - name: Install Salesforce CLI

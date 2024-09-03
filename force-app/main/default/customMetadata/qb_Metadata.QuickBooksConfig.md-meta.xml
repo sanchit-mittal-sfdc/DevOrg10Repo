@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>QuickBooksConfig</label>
+    <protected>false</protected>
+    <values>
+        <field>Client_Id__c</field>
+        <value xsi:type="xsd:string">ABBquvxhUH0SDQaLhANviuOaUqpgDfUTemNFDYVppvPdMcxCsG</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">IJs86HajXibgbE5mwaFORv7HU3kATFqY92mbN8LL</value>
+    </values>
+    <values>
+        <field>Company_Info__c</field>
+        <value xsi:type="xsd:string">/v3/company/{realmId}/companyinfo/{realmId}</value>
+    </values>
+    <values>
+        <field>Create_Bill__c</field>
+        <value xsi:type="xsd:string">/v3/company/{realmId}/bill?minorversion=</value>
+    </values>
+    <values>
+        <field>Create_Customer__c</field>
+        <value xsi:type="xsd:string">/v3/company/{realmId}/customer?minorversion=</value>
+    </values>
+    <values>
+        <field>Create_Estimate__c</field>
+        <value xsi:type="xsd:string">/v3/company/{realmId}/estimate?minorversion=</value>
+    </values>
+    <values>
+        <field>Create_Invoice__c</field>
+        <value xsi:type="xsd:string">/v3/company/{realmId}/invoice?minorversion=</value>
+    </values>
+    <values>
+        <field>Create_Item__c</field>
+        <value xsi:type="xsd:string">/v3/company/{{realmId}}/item?minorversion={{minorVersion}}</value>
+    </values>
+    <values>
+        <field>Create_Payment__c</field>
+        <value xsi:type="xsd:string">/v3/company/{realmId}/payment?minorversion=</value>
+    </values>
+    <values>
+        <field>Create_Vendor__c</field>
+        <value xsi:type="xsd:string">/v3/company/{realmId}/vendor?minorversion=</value>
+    </values>
+    <values>
+        <field>Customer_Url__c</field>
+        <value xsi:type="xsd:string">/v3/company/{realmId}/query?query=select * from Customer&amp;minorversion=</value>
+    </values>
+    <values>
+        <field>Environment__c</field>
+        <value xsi:type="xsd:string">Sandbox</value>
+    </values>
+    <values>
+        <field>PageName__c</field>
+        <value xsi:type="xsd:string">QuickBooksRedirectHelperVF</value>
+    </values>
+    <values>
+        <field>Prod_Base_URL__c</field>
+        <value xsi:type="xsd:string">https://quickbooks.api.intuit.com</value>
+    </values>
+    <values>
+        <field>Sanbdox_Base_URL__c</field>
+        <value xsi:type="xsd:string">https://sandbox-quickbooks.api.intuit.com</value>
+    </values>
+    <values>
+        <field>Scopes__c</field>
+        <value xsi:type="xsd:string">com.intuit.quickbooks.accounting com.intuit.quickbooks.payment openid profile email phone address</value>
+    </values>
+    <values>
+        <field>State__c</field>
+        <value xsi:type="xsd:string">sanchit</value>
+    </values>
+    <values>
+        <field>access_token__c</field>
+        <value xsi:type="xsd:string">Ryf/VVlCibrCNkx7c6wdYzFKf6P/xAEFEFzlkuLXoKX4HDTbyLyhFKDo+0Yw2x/EziTJGcoOvOocFCdrhdHrBmOuiRTMm3jJIxQM2/HO4X44Y/ArNPMS5vdKdG8WJVan19g+IwqCATnJI8AsxYKVaPrXkP4DEO6YhVW/pa3krx5WaPN9jLsbgSY0NOgemNLtVch1s6oiRUFaKKuB0g/kKSWJjW6XClBjp4bd6SQcDXVwisJEXbzSAi8K8fNhkmrmc+GYOComONyB56UQg/UIvk39A/iJzjXfgpciXhFI7YULcKrIfEHD2TlTQFNSpjm/oDoltUMKqIB905UlkFVugR17G2Q8BFF+B9q4Aj7CLm9WwNAp8EtC/g2WN0W6E36+3eCdwzecKH6v0Z59bWFwvFEJ+8YtwoDYUSP0p7SaePJ63/A3ZkFu2uAB/WTGLNLdevlb64TZsuZA5Nyp5+hn3SCuRO02PfFpXZYt29KPdE0zzg2s7uWc3tcSiiEgsd0MbhKZyRFGhELSRDNEXCT9/xQyp5xHbAmRpBJE4KkDyvitUhuKoQkmGCiNgzXVTo4dBWKrDuZHowf1OTLl3DY0ez+2V93XvOUtv0APQu5bHsw8I5ci90/B9GEp89SeawNvDJxnihA/BoyuTh2iedw1wI0SsJEBYZ+cDamAwnl9dP7pRfp+sYp1vJtOqOZ3N7lMfkvB70/I71xFNKh3MVlC0hps7qXYhI8x/IfpExFD4LUX7+QmIT42IpB7M6hQromYxuwPynZNBYnoeE3Ys5t75IaR1tXW6CJZPgPecmR9S+erJD2dCxzNTi8BMNqZcg8PKt5SmWEnDMU8Vfw8TsxeTa4ZK4FTmEbvMwTN3L+WvP5RTnIvG57/uyYnMLPgqemqdNNrHpFzK+9uRpvLzKhipT/oXZZwhIVBK4wqQQrK0mH8gQEkkEcg9JAhPh0gBP+RHGEemUROXPwHnz8h2rJw+6I52aU4MxcTmQSsnZ8dHZ03vpyTr/8wvfftk+Gr+oLB0WcZrmszrTiPmwJ/aM6SYD58kWkuIKGavzjxIDhsfnjk57ZfLZH3Lq+Xl5NyhmJa2erfsIJf+z4lccwTtnQEY++jjjkpxx+SJjsMeflHDrTMOw4gNrvCKp1QJ/QtfIy6v8F9FOC5VM42ZzHGLWOveSP7uf+ISI3rHLUDJGtt/xMn8Fzjoz3FDRdpmXzTChCOdwoIKwSwWmcBjunnBBxzLBC7feJYy7kGvMsFfzGpwFv4X/MLY67Kd6dP41QejQ7PMSEiYWMhqv4rp0LdHTqiGxDqNRji2Xq10//TO+7CAUucuu1qNC9tm9kQZQ58DQ+NvaSDahg4QtKp1OhlF/bSASnTBYMSgcYl87DFxKSigVQ=</value>
+    </values>
+    <values>
+        <field>auth_url__c</field>
+        <value xsi:type="xsd:string">https://appcenter.intuit.com/connect/oauth2</value>
+    </values>
+    <values>
+        <field>expires_in__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>expires_in_time__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>minorversion__c</field>
+        <value xsi:type="xsd:string">73</value>
+    </values>
+    <values>
+        <field>realmId__c</field>
+        <value xsi:type="xsd:string">9341453012483787</value>
+    </values>
+    <values>
+        <field>refresh_token__c</field>
+        <value xsi:type="xsd:string">KHK5XmNS5O+x36+F9qZo4MayMAxVXMBuOg9aZSzVbqaFWH9c3WFu5nTcg36RSXzbobgvr3FzGWu2EvBLVHiqmuGfnM0ugslL5xvFyT6N3lU=</value>
+    </values>
+    <values>
+        <field>token_type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>token_url__c</field>
+        <value xsi:type="xsd:string">https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer</value>
+    </values>
+</CustomMetadata>

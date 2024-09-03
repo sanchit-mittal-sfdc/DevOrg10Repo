@@ -12,6 +12,7 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Integration Hub</label>
     <navType>Standard</navType>
+    <tabs>QuickBooks_Connect</tabs>
     <tabs>Device_IoT_Flow</tabs>
     <tabs>LinkedIn_Integration</tabs>
     <tabs>Client_Credentials_Flow</tabs>

@@ -76,6 +76,12 @@ export default class QuickBooksConnectLwc extends LightningElement {
     selectedRowsInTable = [];
     useNamedCredentials = false;
 
+    /**
+     * 
+     * Make sure to assign the permission sets responsible for assigning the access to the External credentials principal after deploment
+     *  and also update the Client secret in AUth. Provider bcz it becomes blank after deployment
+     */
+
     // called in page load. Checks if code, c__realmId and state are present 
     async connectedCallback(){
         debugger;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Synced_With_QuickBooks__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>if it is true it means that it has been created on QuickBooks as well and in that case the External id field QuickBooksId will also be populated.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>if it is true it means that it has been created on QuickBooks as well and in that case the External id field QuickBooksId will also be populated.</inlineHelpText>
+    <label>Is Synced With QuickBooks?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

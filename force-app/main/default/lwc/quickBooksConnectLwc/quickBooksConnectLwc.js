@@ -74,7 +74,7 @@ export default class QuickBooksConnectLwc extends LightningElement {
     @track paginatedRecords = [];
     currentPageNumberDetails;
     selectedRowsInTable = [];
-    useNamedCredentials;
+    useNamedCredentials = false;
 
     // called in page load. Checks if code, c__realmId and state are present 
     async connectedCallback(){
@@ -153,11 +153,27 @@ export default class QuickBooksConnectLwc extends LightningElement {
     }
 
 
+    handleNamedCredentialsToggle(event){
+
+        debugger;
+        this.useNamedCredentials = event.target.checked;
+
+        if(this.useNamedCredentials)
+        {
+            this.isUserLoggedIn = true;
+            this.fetchProductsFromSF('handleNamedCredentialsToggle');
+        }
+        else
+        {
+            this.isUserLoggedIn = false;
+        }
+    }
+
     async fetchProductsFromSF(calledFrom){
 
         debugger;
         console.log(`fetchProductsFromSF called from ${calledFrom}`);
-        this.isLoaded = true;
+        this.isLoaded = false;
         const productsResponse = await getSFProducts({});
         debugger;
         this.isLoaded = true;
@@ -188,7 +204,6 @@ export default class QuickBooksConnectLwc extends LightningElement {
         }
     }
 
-
     // called when user clicks the "AUthorize QuickBooks" 
     handleAuthorizeQuickBooksClick(event){
         debugger;
@@ -198,6 +213,7 @@ export default class QuickBooksConnectLwc extends LightningElement {
             window.location.href = this.urlForAuthCode;
         }
     }
+    
 
 
     recalculatePagination(event){
@@ -263,6 +279,7 @@ export default class QuickBooksConnectLwc extends LightningElement {
         this.isLoaded = true;
     }
 
+    
 
     handlePageSizeChange(event){
         
@@ -322,7 +339,9 @@ export default class QuickBooksConnectLwc extends LightningElement {
                 
                 try
                 {
+                    this.isLoaded = false;
                     const response = await syncProductsInQuickBooks({productsIdsToSync:selectedProductsIds, useNamedCredentails:this.useNamedCredentials});
+                    this.isLoaded = true;
                     console.log(`response = ${JSON.stringify(response)}`);
                     if(response && response.isSuccess)
                     {
@@ -344,6 +363,7 @@ export default class QuickBooksConnectLwc extends LightningElement {
                         variant: "error",
                         mode:"dismissible"
                     }, this);
+                    this.isLoaded = true;
                 }
                 
             }

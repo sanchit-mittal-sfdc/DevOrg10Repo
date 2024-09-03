@@ -465,6 +465,16 @@
         <field>OAuthFlowDetails__c.User__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Product2.Is_Synced_With_QuickBooks__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Product2.QuickBooks_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Integration Hub Permissions</label>
     <objectPermissions>
@@ -494,6 +504,15 @@
         <object>OAuthFlowDetails__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Product2</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
     <tabSettings>
         <tab>Client_Credentials_Flow</tab>
         <visibility>Visible</visibility>
@@ -512,6 +531,10 @@
     </tabSettings>
     <tabSettings>
         <tab>OAuth_2_0_Web_Server_Flow_WITH_PKCE</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>QuickBooks_Connect</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

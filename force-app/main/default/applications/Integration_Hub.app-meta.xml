@@ -12,14 +12,15 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Integration Hub</label>
     <navType>Standard</navType>
+    <tabs>Zoom_Integration</tabs>
     <tabs>QuickBooks_Connect</tabs>
-    <tabs>Device_IoT_Flow</tabs>
     <tabs>LinkedIn_Integration</tabs>
+    <tabs>Device_IoT_Flow</tabs>
     <tabs>Client_Credentials_Flow</tabs>
     <tabs>OAuth_2_0_Web_Server_Flow_WITH_PKCE</tabs>
     <tabs>oAuth_2_0_User_Agent_Flow</tabs>
     <tabs>oAuth_2_0_Web_Server_Flow</tabs>
-    <tabs>standard-Account</tabs>
+    <tabs>OpenCage_GeoCoding_Integration</tabs>
     <tabs>OAuthFlowDetails__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Integration_Hub_UtilityBar</utilityBar>

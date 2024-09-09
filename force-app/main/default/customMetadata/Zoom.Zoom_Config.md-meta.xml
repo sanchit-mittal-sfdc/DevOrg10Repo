@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Zoom Config</label>
+    <protected>false</protected>
+    <values>
+        <field>Access_Token__c</field>
+        <value xsi:type="xsd:string">eyJzdiI6IjAwMDAwMSIsImFsZyI6IkhTNTEyIiwidiI6IjIuMCIsImtpZCI6Ijk3Yzc1N2IyLTcyOGEtNDM4NS04NzgxLTc3NmJlZTJkNTE5NiJ9.eyJhdWQiOiJodHRwczovL29hdXRoLnpvb20udXMiLCJ1aWQiOiJJNFdYUk9hdVM0MksxVDlpUk1EYi1BIiwidmVyIjo5LCJhdWlkIjoiNWY1M2RkZjkzYTkxNjBiMzM0ZWY1Mzc0NzI5MjMwNjgiLCJuYmYiOjE3MjU2MTk4MzcsImlzcyI6InptOmNpZDoyTkZjNjhIdVQxNkNMRjRQVGs0S3ZBIiwiZ25vIjowLCJleHAiOjE3MjU2MjM0MzcsInR5cGUiOjIsImlhdCI6MTcyNTYxOTgzN30.VNOBVp9QlwW2NfankoIJoN2_fY-wCT0o4whP3BVggxsxZGk5rvrZvTAGGMYMSsQIkvUV5fFtWCU4wa6aQhJ4Xw</value>
+    </values>
+    <values>
+        <field>Account_ID__c</field>
+        <value xsi:type="xsd:string">D4kzaJ-aS3GXesUBGcoaZQ</value>
+    </values>
+    <values>
+        <field>Auth_URL__c</field>
+        <value xsi:type="xsd:string">https://zoom.us/oauth/authorize</value>
+    </values>
+    <values>
+        <field>Base_URL__c</field>
+        <value xsi:type="xsd:string">https://api.zoom.us/v2</value>
+    </values>
+    <values>
+        <field>Client_ID__c</field>
+        <value xsi:type="xsd:string">2NFc68HuT16CLF4PTk4KvA</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">Ades3t9tgqqw43R494ersskJGF8zyzTK</value>
+    </values>
+    <values>
+        <field>Expires_at__c</field>
+        <value xsi:type="xsd:dateTime">2024-09-06T11:50:37.000Z</value>
+    </values>
+    <values>
+        <field>Token_URL__c</field>
+        <value xsi:type="xsd:string">https://zoom.us/oauth/token</value>
+    </values>
+</CustomMetadata>

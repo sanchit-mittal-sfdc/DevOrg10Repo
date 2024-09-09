@@ -1,0 +1,12 @@
+.pill-wrapper {
+    background-color: greenyellow;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth transition for both color and shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Default shadow */
+}
+
+.pill-wrapper:hover {
+    background-color: lightcoral; /* Change color on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}

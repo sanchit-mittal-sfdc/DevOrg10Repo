@@ -1,0 +1,42 @@
+<!--
+<template>
+    
+    <lightning-layout multiple-rows>
+
+        <lightning-pill-container >
+            <template for:each={selectedRecords} for:item="rec">
+
+                <lightning-layout-item key={rec.Id}>
+                    <c-custom-pill-lwc  pill-details={rec} ></c-custom-pill-lwc>
+                </lightning-layout-item>
+                
+            </template>
+        </lightning-pill-container>
+
+    </lightning-layout>
+    
+
+</template>
+-->
+
+<template>
+    <!-- Custom Container for Pills with Title -->
+    <div class="pill-container">
+        <!-- Title Section -->
+        <div class="title">
+            <h2>RECIPIENTS</h2>
+        </div>
+        
+        <!-- Pills Section -->
+        <div class="pills">
+            <template for:each={selectedRecords} for:item="rec">
+
+                <lightning-layout-item key={rec.Id}>
+                    <c-custom-pill-lwc  pill-details={rec} ></c-custom-pill-lwc>
+                </lightning-layout-item>
+                
+            </template>
+        </div>
+    </div>
+</template>
+

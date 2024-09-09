@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="OpenCage Geocoding Integration" class="custom-card">
+        <div class="content-container">
+            <p class="description">
+                This demo showcases the integration with the OpenCage Geocoding API.
+                Follow the steps below to test it:
+            </p>
+            <ol class="instructions">
+                <li>Navigate to the Accounts tab.</li>
+                <li>Edit the latitude and longitude fields of any Account record.</li>
+                <li>Upon saving, the billing address will automatically update using the geocoding API.</li>
+            </ol>
+            <div class="button-container">
+                <lightning-button label="Go to Accounts Tab" variant="brand" onclick={openAccountsTab}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

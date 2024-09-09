@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expires_at__c</fullName>
+    <description>Basically this field will be = system.now().addSeconds(expires_in_seconds)</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Basically this field will be = system.now().addSeconds(expires_in_seconds)</inlineHelpText>
+    <label>Expires at</label>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

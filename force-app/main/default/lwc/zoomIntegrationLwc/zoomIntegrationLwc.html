@@ -1,0 +1,89 @@
+<template>
+
+    <template if:false={isLoaded}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+
+    <lightning-card if:true={isLoaded}>
+
+        <lightning-layout multiple-rows>
+
+            <lightning-layout-item size="12" padding="around-medium">
+
+                <lightning-layout>
+
+                    <lightning-layout-item size="2">
+
+                        <lightning-combobox
+                                label="Select Object"
+                                value={selectedObjectApiName}
+                                options={objectOptions}
+                                onchange={handleObjectChange}>
+                        </lightning-combobox>
+
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="4" padding="horizontal-small">
+
+                        <lightning-record-picker 
+                                    label="Search and select to add recipient"
+                                    display-info={displayInfo}
+                                    matching-info={matchingInfo}
+                                    object-api-name={selectedObjectApiName}
+                                    placeholder={placeholderVal}
+                                    onchange={handleRecordClickInRecordPicker} >
+                        </lightning-record-picker>
+
+                    </lightning-layout-item>
+
+                </lightning-layout>
+
+            </lightning-layout-item>
+
+
+            <lightning-layout-item size="12" padding="around-medium">
+                <c-generic-show-selected-records-with-remove-option onremovepill={handleRemoveRecipient} selected-records={selectedRecordsForAttendees} ></c-generic-show-selected-records-with-remove-option>
+            </lightning-layout-item>
+
+
+            <!-- Form for Zoom Meeting Details -->
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-layout multiple-rows vertical-align="center">
+                    <!-- Meeting Topic and Agenda -->
+                    <lightning-layout-item size="12" padding="around-small">
+                        <lightning-input required label="Meeting Topic" data-id="topic"></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" padding="around-small">
+                        <lightning-textarea required label="Agenda" data-id="agenda"></lightning-textarea>
+                    </lightning-layout-item>
+
+                    <!-- Duration and Is Future Meeting Checkbox -->
+                    <lightning-layout-item size="2" padding="around-small">
+                        <lightning-input required max="40" min="10" message-when-range-overflow	="Duration must be between 10 and 40" label="Duration (minutes)" type="number" data-id="duration"></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="10"></lightning-layout-item>
+                    <lightning-layout-item size="12" padding="around-small">
+                        <lightning-input type="checkbox" label="Is this a Future Meeting?" checked={isFutureMeeting} onchange={handleFutureMeetingCheckboxChange} data-id="isFutureMeeting"></lightning-input>
+                    </lightning-layout-item>
+
+                    <!-- Start Time Field (Visible only if Future Meeting) -->
+                    <template if:true={isFutureMeeting}>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input timezone="Asia/Kolkata" label="Start Time" type="datetime-local" data-id="start_time"></lightning-input>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </lightning-layout-item>
+
+
+            <lightning-layout-item size="12" padding="around-medium">
+                <div class="slds-text-align_center">
+                    <lightning-button icon-name="utility:email" label="Send" variant="brand" onclick={handleSendZoomInviteClick}></lightning-button>
+                </div>
+            </lightning-layout-item>
+
+            
+        </lightning-layout>
+
+    </lightning-card>
+</template>

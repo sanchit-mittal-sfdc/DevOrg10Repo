@@ -4,12 +4,6 @@ export function toUpper(name) {
     return name.toUpperCase();
 }
 
-export function showToastMessage(whichThis, labelVal, messageVal, variantVal, modeVal){
-    Toast.show({
-        label:labelVal,
-        message:messageVal,
-        variant:variantVal,
-        mode:modeVal
-
-    }, whichThis);
+export function showToastMessage(whichThis, label, message, variant, mode){
+    Toast.show({label, message, variant, mode}, whichThis);
 }

@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>AccessToken__c</field>
-        <value xsi:type="xsd:string">00D6F000001gFIu!AQcAQP.k7bJDsD3KPBaO1bKXq0EZSgg_dMgyBACXm9qFt4pH9N3sxmrLbaFN.O.dsvRQN58XwM__dba2FDogyuVXUqKTSmiT</value>
+        <value xsi:type="xsd:string">REMOVED_SECRET</value>
     </values>
     <values>
         <field>Access_Token_URL__c</field>
@@ -60,7 +60,7 @@
     </values>
     <values>
         <field>ClientSecret__c</field>
-        <value xsi:type="xsd:string">7A01CF75ABBC9FFB20D6514B8297ECBD26261F6875F50F374AE4FD54C75B2CFA</value>
+        <value xsi:type="xsd:string">REMOVED_SECRET</value>
     </values>
     <values>
         <field>Description__c</field>
@@ -108,7 +108,7 @@
     </values>
     <values>
         <field>Refresh_Token__c</field>
-        <value xsi:type="xsd:string">5Aep861..zRMyCurAUkuUmG3VNI71w4Jz.gYqwqV5cLG9jTQF3LyNa9FdLh5Ag3iUoQTa79UvQ9n_ZIA0Mx33oj</value>
+        <value xsi:type="xsd:string">REMOVED_SECRET</value>
     </values>
     <values>
         <field>Scope__c</field>

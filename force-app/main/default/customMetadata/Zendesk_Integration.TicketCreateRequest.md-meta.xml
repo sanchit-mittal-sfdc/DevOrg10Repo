@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>API_Token__c</field>
-        <value xsi:type="xsd:string">tFqTKMquro8TWhMHr6fWG7d29GWROUzOWytrHAwI</value>
+        <value xsi:type="xsd:string">REMOVED_SECRET</value>
     </values>
     <values>
         <field>Email__c</field>

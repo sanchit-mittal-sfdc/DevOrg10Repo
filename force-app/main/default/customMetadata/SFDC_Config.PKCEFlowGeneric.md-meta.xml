@@ -28,7 +28,7 @@
     </values>
     <values>
         <field>ClientSecret__c</field>
-        <value xsi:type="xsd:string">F4E05F7824995E2CB0C0D38BA50F9D06F6D34182D35AFC1DE57BCD4A530C2AF9</value>
+        <value xsi:type="xsd:string">REMOVED_SECRET</value>
     </values>
     <values>
         <field>Description__c</field>

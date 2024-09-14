@@ -3,12 +3,10 @@
     <authorizeUrl>https://accounts.google.com/o/oauth2/v2/auth</authorizeUrl>
     <consumerKey>98120671374-5kqvrfgcon2uv1s24e1k9ufbo7astfdq.apps.googleusercontent.com</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
-    <executionUser>test-5vesf8an1iqv@example.com</executionUser>
     <friendlyName>Google</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <isPkceEnabled>true</isPkceEnabled>
     <providerType>Google</providerType>
-    <registrationHandler>AutocreatedRegHandler1726157680053</registrationHandler>
     <requireMfa>false</requireMfa>
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>

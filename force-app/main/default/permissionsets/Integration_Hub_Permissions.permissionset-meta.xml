@@ -57,6 +57,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>GmailntegrationRedirectVFController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>GoogleIntegrationController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LinkedinIntegrationLwcController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -625,6 +633,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>OAuthFlowDetails__c.Expires_at_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>OAuthFlowDetails__c.Instance_URL__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -714,12 +727,36 @@
         <object>Product2</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <pageAccesses>
+        <apexPage>FetchAuthCodeAndAccessTokenVF</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>GmailIntegrationRedirectHelperVF</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>LinkedinIntegrationRedirectHelperVF</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>PkceWebServerFlowRedirectVF</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>QuickBooksRedirectHelperVF</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <tabSettings>
         <tab>Client_Credentials_Flow</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
         <tab>Device_IoT_Flow</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Gmail_Integration</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

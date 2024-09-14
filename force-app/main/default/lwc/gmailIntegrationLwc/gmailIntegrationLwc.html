@@ -1,0 +1,64 @@
+<template>
+    <!-- Show loading spinner until the component is fully loaded -->
+    <template if:false={isLoaded}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+
+    <!-- Once the component is loaded, display the content -->
+    <template if:true={isLoaded}>
+
+        <!-- Lightning card to hold the content in a neat container -->
+        <lightning-card>
+
+            <lightning-input slot="actions" checked={namedCredentialsToggleVal} type="toggle" label="Use Named Credentials?" onchange={handleToggle}></lightning-input>
+
+            <!-- If the user is not logged in, display the Google account connect button -->
+            <template if:false={isUserLoggedIn}>
+                <div class="slds-text-align_center slds-p-around_medium">
+                    <!-- Button to initiate the authentication flow for Google login -->
+                    <lightning-button variant="brand" label="Connect your google account" icon-name="utility:connected_apps" onclick={initiateAuthCodeFlow}></lightning-button>
+                </div>
+            </template>
+
+            <!-- If the user is logged in, show a confirmation message -->
+            <template if:true={isUserLoggedIn}>
+
+                <!-- Layout to organize the confirmation message -->
+                <lightning-layout multiple-rows>
+
+                    <!--Input fields for composing an email -->
+                    <lightning-layout-item size="12" padding="around-medium" large-device-size="12">
+                        <lightning-input label="To" required value={toEmail} data-id="to"></lightning-input>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" padding="around-medium" large-device-size="12">
+                        <lightning-input label="CC" value={ccEmail} data-id="cc"></lightning-input>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" padding="around-medium" large-device-size="12">
+                        <lightning-input label="BCC" value={bccEmail} data-id="bcc"></lightning-input>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" padding="around-medium">
+                        <lightning-input required label="Subject" value={subject} type="text" data-id="subject"></lightning-input>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" padding="around-medium">
+                        <lightning-input-rich-text required label="Body" value={emailBody} data-id="body"></lightning-input-rich-text>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" padding="around-medium">
+                        <!-- Send Email Button -->
+                            <div class="slds-text-align_center">
+                            <lightning-button variant="brand" icon-name="utility:email" label="Send Email" onclick={handleSendEmail}></lightning-button>
+                        </div>
+                    </lightning-layout-item>
+
+                </lightning-layout>
+
+            </template>
+
+        </lightning-card>
+
+    </template>
+</template>

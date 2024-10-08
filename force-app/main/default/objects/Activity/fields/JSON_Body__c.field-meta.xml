@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>JSON_Body__c</fullName>
+    <description>it will be used for setting the request body while making callout to google calendar API for event creation/update</description>
+    <externalId>false</externalId>
+    <inlineHelpText>it will be used for setting the request body while making callout to google calendar API for event creation/update</inlineHelpText>
+    <label>JSON Body1</label>
+    <required>false</required>
+    <type>TextArea</type>
+</CustomField>

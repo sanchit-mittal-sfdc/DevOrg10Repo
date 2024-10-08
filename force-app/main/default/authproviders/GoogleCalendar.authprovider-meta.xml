@@ -3,7 +3,7 @@
     <authorizeUrl>https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&amp;access_type=offline&amp;include_granted_scopes=true</authorizeUrl>
     <consumerKey>98120671374-5kqvrfgcon2uv1s24e1k9ufbo7astfdq.apps.googleusercontent.com</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
-    <friendlyName>Google</friendlyName>
+    <friendlyName>GoogleCalendar</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <isPkceEnabled>true</isPkceEnabled>
     <providerType>Google</providerType>
@@ -11,5 +11,4 @@
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
     <sendSecretInApis>true</sendSecretInApis>
-    <tokenUrl>https://accounts.google.com/o/oauth2/token</tokenUrl>
 </AuthProvider>

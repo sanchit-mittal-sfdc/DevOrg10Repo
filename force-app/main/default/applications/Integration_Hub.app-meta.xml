@@ -12,6 +12,7 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Integration Hub</label>
     <navType>Standard</navType>
+    <tabs>Google_Calendar_Integration</tabs>
     <tabs>Gmail_Integration</tabs>
     <tabs>Zoom_Integration</tabs>
     <tabs>QuickBooks_Connect</tabs>

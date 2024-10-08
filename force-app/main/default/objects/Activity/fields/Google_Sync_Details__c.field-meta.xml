@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Google_Sync_Details__c</fullName>
+    <description>Stores error msg with timestamp in case of error and also the timestamp in case of success</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Stores error msg with timestamp in case of error and also the timestamp in case of success</inlineHelpText>
+    <label>Google Sync Details</label>
+    <required>false</required>
+    <type>TextArea</type>
+</CustomField>

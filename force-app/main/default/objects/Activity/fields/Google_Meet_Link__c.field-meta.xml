@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Google_Meet_Link__c</fullName>
+    <description>This field will auto-populate upon sync if the checkbox &quot;Send_Google_Meet_Link_to_Attendees__c&quot; is checked during event creation.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field will auto-populate upon sync if the checkbox &quot;Send_Google_Meet_Link_to_Attendees__c&quot; is checked during event creation.</inlineHelpText>
+    <label>Google Meet Link</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

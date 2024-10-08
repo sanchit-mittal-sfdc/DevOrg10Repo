@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Send_Google_Meet_Link_to_Attendees__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If checked an email will be sent automatically by google itself with a Google Meet link. Also the link will be stored in Google_Meet_Link__c field.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If checked an email will be sent automatically by google itself with a Google Meet link. Also the link will be stored in Google_Meet_Link__c field.</inlineHelpText>
+    <label>Send Google Meet Link to Attendees?</label>
+    <type>Checkbox</type>
+</CustomField>

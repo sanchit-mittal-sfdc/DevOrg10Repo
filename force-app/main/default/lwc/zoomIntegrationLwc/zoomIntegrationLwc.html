@@ -58,10 +58,10 @@
                     </lightning-layout-item>
 
                     <!-- Duration and Is Future Meeting Checkbox -->
-                    <lightning-layout-item size="2" padding="around-small">
+                    <lightning-layout-item size="4" padding="around-small">
                         <lightning-input required max="40" min="10" message-when-range-overflow	="Duration must be between 10 and 40" label="Duration (minutes)" type="number" data-id="duration"></lightning-input>
                     </lightning-layout-item>
-                    <lightning-layout-item size="10"></lightning-layout-item>
+                    <lightning-layout-item size="8"></lightning-layout-item>
                     <lightning-layout-item size="12" padding="around-small">
                         <lightning-input type="checkbox" label="Is this a Future Meeting?" checked={isFutureMeeting} onchange={handleFutureMeetingCheckboxChange} data-id="isFutureMeeting"></lightning-input>
                     </lightning-layout-item>

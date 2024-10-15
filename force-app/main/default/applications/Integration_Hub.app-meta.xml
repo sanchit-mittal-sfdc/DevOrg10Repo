@@ -12,6 +12,8 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Integration Hub</label>
     <navType>Standard</navType>
+    <tabs>Change_Data_Capture_Demo</tabs>
+    <tabs>Subscribe_Platform_Events_Using_LWC</tabs>
     <tabs>Google_Calendar_Integration</tabs>
     <tabs>Gmail_Integration</tabs>
     <tabs>Zoom_Integration</tabs>

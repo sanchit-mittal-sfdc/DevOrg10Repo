@@ -870,6 +870,15 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Order_Placed_Platform_Event__e</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
@@ -897,6 +906,10 @@
         <apexPage>QuickBooksRedirectHelperVF</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <tabSettings>
+        <tab>Change_Data_Capture_Demo</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
     <tabSettings>
         <tab>Client_Credentials_Flow</tab>
         <visibility>Visible</visibility>
@@ -935,6 +948,10 @@
     </tabSettings>
     <tabSettings>
         <tab>QuickBooks_Connect</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Subscribe_Platform_Events_Using_LWC</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Kitchen order POC Using Platform Events">
+        <p>{info}</p><br/><br/><br/><br/>
+
+        <p>
+            Just create a platform event(Order_Placed_Platform_Event__e) in dev console or click the button below and automatically you'll see a Toast notification here. Also, if lets say you miss the notifications(if you are not on this page, then you'll receive the missed notification s as well once you come back here and reload the page)
+        </p>
+        <br/><br/>
+
+        <lightning-button label="Create Platform Event" onclick={handleButtonClick}></lightning-button>
+
+        <p>You can also use the MAVEN TOOLS chrome extension to subscribe the platform event</p>
+    </lightning-card>
+</template>

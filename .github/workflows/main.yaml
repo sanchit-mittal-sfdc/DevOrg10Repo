@@ -24,11 +24,6 @@ jobs:
         run: |
           echo y | sfdx plugins:install sfdx-git-delta
           sfdx plugins
-      # Install utilities
-      - name: Install utilities
-        run: |
-         pip install yq
-         xq --version
       # Checkout the code in the pull request
       - name: Checkout
         uses: actions/checkout@v3
@@ -67,11 +62,6 @@ jobs:
         run: |
           echo y | sfdx plugins:install sfdx-git-delta
           sfdx plugins
-      # Install utilities
-      - name: Install utilities
-        run: |
-         pip install yq
-         xq --version
       # Checkout the code in the pull request
       - name: Checkout
         uses: actions/checkout@v3

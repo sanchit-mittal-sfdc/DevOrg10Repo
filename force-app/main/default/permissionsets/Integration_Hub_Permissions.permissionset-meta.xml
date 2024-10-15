@@ -914,6 +914,10 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
+        <tab>JWT_Bearer_Token_Fow_Demo</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>LinkedIn_Integration</tab>
         <visibility>Visible</visibility>
     </tabSettings>

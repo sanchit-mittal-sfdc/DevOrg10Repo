@@ -24,6 +24,7 @@
     <tabs>oAuth_2_0_Web_Server_Flow</tabs>
     <tabs>OpenCage_GeoCoding_Integration</tabs>
     <tabs>OAuthFlowDetails__c</tabs>
+    <tabs>JWT_Bearer_Token_Fow_Demo</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Integration_Hub_UtilityBar</utilityBar>
 </CustomApplication>
